@@ -1,0 +1,1547 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Alberto Clock</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+:root {
+ --navy:#07121d;
+ --gold:#d7ad6a;
+ --cream:#f7e8ce;
+ --muted:#a8aeb6;
+}
+
+* {
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+html {
+ min-height:100%;
+}
+
+body {
+ min-height:100vh;
+ min-height:100dvh;
+ background:#07121d;
+ color:white;
+ font-family:'DM Sans',sans-serif;
+ overflow-x:hidden;
+}
+
+button,input {
+ font:inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+ outline:2px solid #e6bd78;
+ outline-offset:4px;
+}
+
+a {
+ color:inherit;
+ text-decoration:none;
+}
+
+.scene {
+ min-height:100vh;
+ min-height:100dvh;
+ display:grid;
+ grid-template-columns:52% 48%;
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ background:
+ radial-gradient(ellipse at 30% 60%,#17222a 0%,transparent 60%),
+ linear-gradient(110deg,#091522,#020910);
+}
+
+/* WALL PANELS */
+
+.scene::before {
+ content:"";
+ position:absolute;
+ inset:0;
+ z-index:-2;
+ background:
+ repeating-linear-gradient(
+  90deg,
+  transparent 0,
+  transparent 24.7%,
+  rgba(195,145,75,.12) 24.8%,
+  rgba(195,145,75,.12) 25%,
+  transparent 25.2%
+ ),
+ repeating-linear-gradient(
+  0deg,
+  transparent 0,
+  transparent 93%,
+  rgba(195,145,75,.06) 93.1%,
+  transparent 93.4%
+ );
+ pointer-events:none;
+}
+
+/* BRAND */
+
+.brand {
+ position:absolute;
+ top:35px;
+ left:48px;
+ z-index:20;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ color:var(--gold);
+}
+
+.brand i {
+ font-size:23px;
+ margin-bottom:8px;
+}
+
+.brand strong {
+ font-family:'Playfair Display',serif;
+ font-weight:500;
+ font-size:22px;
+ letter-spacing:5px;
+}
+
+.brand small {
+ font-size:8px;
+ letter-spacing:4px;
+ margin-top:8px;
+ color:var(--cream);
+}
+
+.back-home {
+ position:absolute;
+ right:40px;
+ top:40px;
+ z-index:20;
+ color:#d9c5a3;
+ font-size:11px;
+ letter-spacing:1px;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ transition:.3s;
+}
+
+.back-home:hover {
+ color:white;
+}
+
+/* LEFT AREA */
+
+.lamp-area {
+ position:relative;
+ min-height:780px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ isolation:isolate;
+}
+
+.lamp-area::before {
+ content:"";
+ position:absolute;
+ width:470px;
+ height:470px;
+ border:1px solid rgba(203,159,93,.11);
+ border-radius:50%;
+ top:28%;
+ left:12%;
+ pointer-events:none;
+}
+
+.lamp-light {
+ position:absolute;
+ z-index:-1;
+ top:215px;
+ left:50%;
+ transform:translateX(-50%);
+ width:800px;
+ height:760px;
+ opacity:0;
+ pointer-events:none;
+ background:radial-gradient(
+ ellipse at 50% 0%,
+ rgba(255,197,91,.38),
+ rgba(225,149,46,.13) 35%,
+ transparent 73%
+ );
+ clip-path:polygon(43% 0,57% 0,100% 100%,0 100%);
+ transition:opacity 1.2s;
+ filter:blur(18px);
+}
+
+.scene.is-on .lamp-light {
+ opacity:1;
+}
+
+/* LAMP ASSEMBLY */
+
+.lamp-assembly {
+ position:absolute;
+ top:0;
+ left:50%;
+ transform:translateX(-50%);
+ width:420px;
+ height:540px;
+ z-index:5;
+ filter:drop-shadow(10px 22px 22px rgba(0,0,0,.65));
+}
+
+.ceiling-wire {
+ position:absolute;
+ top:0;
+ left:208px;
+ height:92px;
+ width:5px;
+ border-radius:3px;
+ background:linear-gradient(90deg,#030406,#6d5838,#070809);
+}
+
+.lamp-top {
+ position:absolute;
+ top:82px;
+ left:169px;
+ width:82px;
+ height:80px;
+ border-radius:15px 15px 8px 8px;
+ background:
+ linear-gradient(90deg,
+ #17120c 0%,
+ #76532c 12%,
+ #f5d18a 28%,
+ #69471d 44%,
+ #1a130d 58%,
+ #b78b4b 82%,
+ #20170f 100%);
+ border:2px solid #8e6739;
+ box-shadow:inset 0 0 15px #000;
+}
+
+.lamp-top::before,
+.lamp-top::after {
+ content:"";
+ position:absolute;
+ left:-8px;
+ right:-8px;
+ height:9px;
+ border-radius:10px;
+ background:linear-gradient(#e6c181,#60411e,#c79c55);
+}
+
+.lamp-top::before {top:10px;}
+.lamp-top::after {bottom:8px;}
+
+.lamp-shade {
+ position:absolute;
+ top:145px;
+ left:25px;
+ width:370px;
+ height:180px;
+ background:
+ radial-gradient(ellipse at 48% 25%,rgba(245,209,140,.2),transparent 42%),
+ linear-gradient(
+  100deg,
+  #100e0b 0%,
+  #49341e 12%,
+  #9b7140 23%,
+  #261b12 39%,
+  #120e0b 53%,
+  #72502a 76%,
+  #17110c 100%
+ );
+ clip-path:polygon(38% 0,62% 0,100% 91%,98% 100%,2% 100%,0 91%);
+ border-radius:25px 25px 10px 10px;
+ filter:drop-shadow(0 15px 12px #000);
+}
+
+.lamp-shade::after {
+ content:"";
+ position:absolute;
+ bottom:0;
+ left:0;
+ right:0;
+ height:12px;
+ background:linear-gradient(
+  90deg,#5d3c1e,#e7bd77,#6e4823,#d9a862,#503218
+ );
+ border-radius:50%;
+}
+
+.shade-interior {
+ position:absolute;
+ top:305px;
+ left:34px;
+ width:352px;
+ height:37px;
+ border-radius:50%;
+ background:radial-gradient(ellipse,#6d431d,#120d09 72%);
+ border:4px solid #a77a43;
+ transition:.8s;
+}
+
+.scene.is-on .shade-interior {
+ background:radial-gradient(
+ ellipse,
+ #fff3bb 0%,
+ #f6c96e 30%,
+ #9a5920 65%,
+ #20110a 100%
+ );
+ box-shadow:0 0 55px 12px rgba(255,177,55,.55);
+}
+
+.bulb {
+ position:absolute;
+ top:302px;
+ left:192px;
+ width:36px;
+ height:51px;
+ border-radius:45% 45% 50% 50%;
+ background:linear-gradient(#45301a,#805124);
+ transition:.7s;
+}
+
+.scene.is-on .bulb {
+ background:#fff3bd;
+ box-shadow:
+ 0 0 20px 10px #ffc76d,
+ 0 0 75px 25px rgba(255,170,55,.8),
+ 0 0 160px 70px rgba(255,154,45,.2);
+}
+
+/* INTERACTIVE CHAIN */
+
+.chain {
+ position:absolute;
+ left:328px;
+ top:314px;
+ width:45px;
+ height:300px;
+ z-index:15;
+ cursor:grab;
+ touch-action:none;
+ transform-origin:top center;
+ transition:transform .35s ease;
+ user-select:none;
+}
+
+.chain:active {
+ cursor:grabbing;
+}
+
+.chain.pulling {
+ transition:none;
+}
+
+.chain-line {
+ position:absolute;
+ top:0;
+ left:20px;
+ height:242px;
+ width:4px;
+ background:repeating-linear-gradient(
+ to bottom,
+ #f0c987 0 4px,
+ #563719 5px 8px
+ );
+ border-radius:4px;
+ box-shadow:2px 0 3px #000;
+}
+
+.chain-handle {
+ position:absolute;
+ top:235px;
+ left:10px;
+ width:24px;
+ height:42px;
+ border-radius:55% 55% 45% 45%;
+ background:linear-gradient(
+  90deg,#4a2d12,#d4a45b,#f6d292,#65401b
+ );
+ box-shadow:0 5px 12px #000;
+}
+
+.chain-handle::after {
+ content:"";
+ position:absolute;
+ left:9px;
+ bottom:5px;
+ width:6px;
+ height:8px;
+ background:#533316;
+ border-radius:50%;
+}
+
+.chain.pulled {
+ animation:chainSwing .75s ease-out;
+}
+
+@keyframes chainSwing {
+ 0% {transform:translateY(0) rotate(0);}
+ 35% {transform:translateY(35px) rotate(5deg);}
+ 70% {transform:translateY(-7px) rotate(-4deg);}
+ 100% {transform:translateY(0) rotate(0);}
+}
+
+/* LIGHT ON WALL */
+
+.wall-glow {
+ position:absolute;
+ width:680px;
+ height:600px;
+ top:260px;
+ left:50%;
+ transform:translateX(-50%);
+ background:radial-gradient(
+ ellipse,
+ rgba(235,154,61,.32),
+ rgba(176,93,31,.07) 55%,
+ transparent 75%
+ );
+ opacity:0;
+ transition:opacity 1s;
+ pointer-events:none;
+}
+
+.scene.is-on .wall-glow {
+ opacity:1;
+}
+
+/* LEFT DECORATION */
+
+.wall-clock {
+ position:absolute;
+ left:45px;
+ top:240px;
+ width:145px;
+ height:145px;
+ border:7px solid #6d4c2a;
+ border-radius:50%;
+ background:radial-gradient(circle,#14202b,#030b13);
+ box-shadow:0 0 0 3px #17120d,8px 15px 20px #000;
+ display:grid;
+ place-items:center;
+ color:#b99156;
+ font-family:'Playfair Display',serif;
+ font-size:14px;
+ letter-spacing:2px;
+ opacity:.8;
+}
+
+.wall-clock::before {
+ content:"";
+ position:absolute;
+ height:48px;
+ width:2px;
+ background:#d4ad70;
+ left:50%;
+ bottom:50%;
+ transform-origin:bottom;
+ transform:rotate(32deg);
+}
+
+.wall-clock::after {
+ content:"";
+ position:absolute;
+ height:34px;
+ width:3px;
+ background:#d4ad70;
+ left:50%;
+ bottom:50%;
+ transform-origin:bottom;
+ transform:rotate(130deg);
+}
+
+.instruction {
+ position:absolute;
+ bottom:80px;
+ left:0;
+ width:100%;
+ text-align:center;
+ z-index:8;
+}
+
+.instruction .line {
+ width:50px;
+ height:1px;
+ background:var(--gold);
+ margin:0 auto 22px;
+}
+
+.instruction h2 {
+ font-family:'Playfair Display',serif;
+ font-size:27px;
+ font-weight:400;
+ color:var(--cream);
+}
+
+.instruction p {
+ margin-top:12px;
+ color:#a99a83;
+ font-size:11px;
+ letter-spacing:2px;
+}
+
+.pull-button {
+ margin-top:22px;
+ padding:12px 20px;
+ border:1px solid rgba(215,173,106,.65);
+ background:rgba(8,19,30,.8);
+ border-radius:30px;
+ color:#e5c38a;
+ font-size:11px;
+ letter-spacing:1.5px;
+ transition:.3s;
+}
+
+.pull-button:hover {
+ background:var(--gold);
+ color:#08131f;
+}
+
+/* RIGHT AREA */
+
+.login-area {
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:120px 55px 65px;
+ position:relative;
+ perspective:1300px;
+}
+
+.login-area::before {
+ content:"";
+ position:absolute;
+ inset:0;
+ background:
+ linear-gradient(90deg,transparent,rgba(0,0,0,.4)),
+ repeating-linear-gradient(
+  125deg,
+  transparent 0 110px,
+  rgba(194,153,91,.025) 111px 112px
+ );
+ pointer-events:none;
+}
+
+.login-card {
+ width:100%;
+ max-width:440px;
+ position:relative;
+ z-index:2;
+ padding:45px 39px;
+ background:
+ linear-gradient(135deg,rgba(20,33,46,.97),rgba(3,10,17,.98));
+ border:1px solid rgba(211,164,95,.55);
+ border-radius:19px;
+ box-shadow:
+ 0 30px 65px rgba(0,0,0,.65),
+ inset 0 0 40px rgba(0,0,0,.35);
+ opacity:0;
+ visibility:hidden;
+ pointer-events:none;
+ transform:rotateY(-25deg) translateX(85px) scale(.92);
+ transition:
+ opacity .8s,
+ transform .9s cubic-bezier(.2,.75,.2,1),
+ visibility .8s,
+ box-shadow .8s;
+}
+
+.scene.is-on .login-card {
+ opacity:1;
+ visibility:visible;
+ pointer-events:auto;
+ transform:rotateY(0) translateX(0) scale(1);
+ box-shadow:
+ 0 35px 90px rgba(0,0,0,.7),
+ -20px 0 85px rgba(223,152,54,.14),
+ inset 0 0 40px rgba(0,0,0,.35);
+}
+
+.card-logo {
+ text-align:center;
+ margin-bottom:35px;
+}
+
+.card-logo i {
+ display:block;
+ font-size:25px;
+ color:var(--gold);
+ margin-bottom:12px;
+}
+
+.card-logo strong {
+ font:18px 'Playfair Display',serif;
+ color:var(--gold);
+ letter-spacing:4px;
+}
+
+.card-logo small {
+ display:block;
+ font-size:7px;
+ letter-spacing:3px;
+ color:#b7a78e;
+ margin-top:8px;
+}
+
+.form-heading {
+ font:33px 'Playfair Display',serif;
+ color:#e6bb7b;
+ text-align:center;
+ margin-bottom:12px;
+}
+
+.form-subtitle {
+ text-align:center;
+ color:var(--muted);
+ font-size:12px;
+ margin-bottom:35px;
+}
+
+.field {
+ margin-bottom:17px;
+ position:relative;
+}
+
+.field > i {
+ position:absolute;
+ left:17px;
+ top:50%;
+ transform:translateY(-50%);
+ color:var(--gold);
+ font-size:16px;
+}
+
+.field input {
+ width:100%;
+ height:53px;
+ background:rgba(2,9,17,.7);
+ border:1px solid rgba(184,142,80,.4);
+ border-radius:12px;
+ color:white;
+ outline:none;
+ padding:0 48px;
+ font-size:12px;
+ transition:.3s;
+}
+
+.field input:focus {
+ border-color:var(--gold);
+ box-shadow:0 0 0 3px rgba(215,173,106,.1);
+}
+
+.field input::placeholder {
+ color:#89939d;
+}
+
+.password-toggle {
+ position:absolute;
+ right:14px;
+ top:50%;
+ transform:translateY(-50%);
+ border:0;
+ background:transparent;
+ color:#a7adb4;
+ font-size:16px;
+ padding:5px;
+}
+
+.form-options {
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ margin:20px 0 27px;
+ font-size:11px;
+ color:#aeb5bd;
+}
+
+.remember {
+ display:flex;
+ align-items:center;
+ gap:8px;
+ cursor:pointer;
+}
+
+.remember input {
+ accent-color:#d7ad6a;
+}
+
+.forgot {
+ color:var(--gold);
+}
+
+.login-btn {
+ width:100%;
+ height:52px;
+ border:0;
+ border-radius:11px;
+ background:linear-gradient(110deg,#ae8045,#f0ca89,#b8894e);
+ color:#0a1420;
+ font-size:13px;
+ font-weight:700;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:15px;
+ transition:.3s;
+}
+
+.login-btn:hover {
+ transform:translateY(-3px);
+ box-shadow:0 10px 25px rgba(215,173,106,.25);
+}
+
+.divider {
+ display:flex;
+ align-items:center;
+ gap:15px;
+ color:#7f8a95;
+ font-size:10px;
+ margin:28px 0;
+}
+
+.divider::before,
+.divider::after {
+ content:"";
+ height:1px;
+ flex:1;
+ background:rgba(215,173,106,.2);
+}
+
+.google-btn {
+ width:100%;
+ min-height:50px;
+ border:1px solid rgba(215,173,106,.6);
+ border-radius:11px;
+ background:transparent;
+ color:#e9e9e9;
+ font-size:12px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:13px;
+}
+
+.google-btn:hover {
+ background:rgba(215,173,106,.08);
+}
+
+.google-icon {
+ font-weight:700;
+ font-size:19px;
+ background:conic-gradient(
+ #4285f4 0 25%,
+ #34a853 25% 50%,
+ #fbbc05 50% 70%,
+ #ea4335 70% 100%
+ );
+ color:transparent;
+ background-clip:text;
+}
+
+.switch-form {
+ text-align:center;
+ color:#aab0b8;
+ font-size:11px;
+ margin-top:29px;
+}
+
+.switch-form button {
+ color:var(--gold);
+ border:0;
+ background:none;
+ margin-left:5px;
+ font-size:11px;
+ font-weight:700;
+}
+
+.form-message {
+ font-size:12px;
+ line-height:1.7;
+ margin-top:17px;
+ text-align:center;
+ color:#e9c18a;
+}
+
+.hidden {
+ display:none!important;
+}
+
+.off-message {
+ position:absolute;
+ z-index:1;
+ color:#ad916c;
+ text-align:center;
+ transition:opacity .4s;
+}
+
+.off-message i {
+ font-size:38px;
+ display:block;
+ margin-bottom:20px;
+}
+
+.off-message p {
+ font-family:'Playfair Display',serif;
+ font-size:23px;
+}
+
+.scene.is-on .off-message {
+ opacity:0;
+ pointer-events:none;
+}
+
+.bottom-caption {
+ position:absolute;
+ bottom:25px;
+ right:40px;
+ color:#8d8274;
+ font-size:9px;
+ letter-spacing:2px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px) {
+ .scene {
+  grid-template-columns:46% 54%;
+ }
+ .lamp-assembly {
+  transform:translateX(-50%) scale(.78);
+  transform-origin:top center;
+ }
+ .login-area {
+  padding:120px 25px 55px;
+ }
+ .login-card {
+  padding:36px 26px;
+ }
+ .wall-clock {
+  display:none;
+ }
+}
+
+@media(max-width:700px) {
+ .scene {
+  display:flex;
+  flex-direction:column;
+  min-height:100dvh;
+  overflow:visible;
+ }
+ .brand {
+  top:23px;
+  left:20px;
+ }
+ .brand strong {
+  font-size:16px;
+  letter-spacing:3px;
+ }
+ .brand small {
+  font-size:6px;
+ }
+ .back-home {
+  top:30px;
+  right:18px;
+  font-size:10px;
+ }
+ .lamp-area {
+  min-height:430px;
+  height:430px;
+ }
+ .lamp-assembly {
+  left:50%;
+  transform:translateX(-50%) scale(.63);
+  transform-origin:top center;
+ }
+ .lamp-light {
+  top:160px;
+  width:100%;
+  height:480px;
+ }
+ .wall-glow {
+  top:130px;
+  width:100%;
+  height:440px;
+ }
+ .instruction {
+  bottom:15px;
+ }
+ .instruction h2 {
+  font-size:19px;
+ }
+ .instruction p {
+  font-size:9px;
+ }
+ .instruction .line {
+  margin-bottom:12px;
+ }
+ .pull-button {
+  margin-top:12px;
+ }
+ .login-area {
+  min-height:420px;
+  padding:20px 18px 55px;
+ }
+ .login-card {
+  max-width:450px;
+  padding:35px 24px;
+ }
+ .bottom-caption {
+  right:0;
+  width:100%;
+  text-align:center;
+  bottom:16px;
+ }
+}
+
+@media(prefers-reduced-motion:reduce) {
+ *,*::before,*::after {
+  animation-duration:.01ms!important;
+  transition-duration:.01ms!important;
+  scroll-behavior:auto!important;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene" id="scene">
+
+<!-- BRAND -->
+
+<a href="index.html" class="brand">
+<i class="bi bi-crown-fill"></i>
+<strong>ALBERTO CLOCK</strong>
+<small>TIME LIVES HERE</small>
+</a>
+
+<a href="index.html" class="back-home">
+<i class="bi bi-arrow-left"></i>
+BACK TO HOME
+</a>
+
+<!-- LEFT: REALISTIC LAMP -->
+
+<section class="lamp-area" aria-label="Interactive lamp">
+
+<div class="wall-glow"></div>
+<div class="lamp-light"></div>
+
+<div class="wall-clock" aria-hidden="true">
+XII
+</div>
+
+<div class="lamp-assembly">
+
+<div class="ceiling-wire"></div>
+
+<div class="lamp-top"></div>
+
+<div class="lamp-shade"></div>
+
+<div class="shade-interior"></div>
+
+<div class="bulb"></div>
+
+<!-- PULL CHAIN -->
+
+<div
+class="chain"
+id="lampChain"
+role="button"
+tabindex="0"
+aria-label="Pull the lamp chain to toggle the login form"
+aria-pressed="false">
+
+<div class="chain-line"></div>
+
+<div class="chain-handle"></div>
+
+</div>
+
+</div>
+
+<div class="instruction">
+
+<div class="line"></div>
+
+<h2 id="lampTitle">
+A Little Light Changes Everything.
+</h2>
+
+<p id="lampInstruction">
+PULL THE CHAIN TO BEGIN
+</p>
+
+<button
+type="button"
+class="pull-button"
+id="pullButton">
+<i class="bi bi-arrow-down"></i>
+ PULL THE CHAIN
+</button>
+
+</div>
+
+</section>
+
+<!-- RIGHT: LOGIN FORM -->
+
+<section class="login-area" id="loginArea">
+
+<div class="off-message" id="offMessage">
+
+<i class="bi bi-lock"></i>
+
+<p>Your Experience Awaits.</p>
+
+</div>
+
+<div class="login-card" id="loginCard" aria-hidden="true" inert>
+
+<div class="card-logo">
+
+<i class="bi bi-crown-fill"></i>
+
+<strong>ALBERTO CLOCK</strong>
+
+<small>TIME LIVES HERE</small>
+
+</div>
+
+<!-- LOGIN -->
+
+<div id="loginView">
+
+<h1 class="form-heading">
+Welcome Back
+</h1>
+
+<p class="form-subtitle">
+Sign in to your account to continue
+</p>
+
+<form id="loginForm">
+
+<div class="field">
+
+<i class="bi bi-envelope"></i>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Email Address"
+autocomplete="email"
+required>
+
+</div>
+
+<div class="field">
+
+<i class="bi bi-lock"></i>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Password"
+autocomplete="current-password"
+minlength="8"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-password="loginPassword"
+aria-label="Show password">
+
+<i class="bi bi-eye"></i>
+
+</button>
+
+</div>
+
+<div class="form-options">
+
+<label class="remember">
+<input type="checkbox" id="rememberMe">
+Remember Me
+</label>
+
+<a href="#" class="forgot" id="forgotLink">
+Forgot Password?
+</a>
+
+</div>
+
+<button class="login-btn" type="submit">
+LOGIN
+<i class="bi bi-arrow-right"></i>
+</button>
+
+</form>
+
+<div class="divider">OR</div>
+
+<button class="google-btn" type="button" id="googleLogin">
+<span class="google-icon">G</span>
+Continue with Google
+</button>
+
+<p class="switch-form">
+Don't have an account?
+<button type="button" id="showSignup">Sign Up</button>
+</p>
+
+</div>
+
+<!-- SIGNUP -->
+
+<div id="signupView" class="hidden">
+
+<h2 class="form-heading">
+Create Account
+</h2>
+
+<p class="form-subtitle">
+Become part of the Alberto Clock world
+</p>
+
+<form id="signupForm">
+
+<div class="field">
+
+<i class="bi bi-person"></i>
+
+<input
+type="text"
+id="signupName"
+placeholder="Full Name"
+autocomplete="name"
+required>
+
+</div>
+
+<div class="field">
+
+<i class="bi bi-envelope"></i>
+
+<input
+type="email"
+id="signupEmail"
+placeholder="Email Address"
+autocomplete="email"
+required>
+
+</div>
+
+<div class="field">
+
+<i class="bi bi-lock"></i>
+
+<input
+type="password"
+id="signupPassword"
+placeholder="Create Password"
+autocomplete="new-password"
+minlength="8"
+required>
+
+<button
+type="button"
+class="password-toggle"
+data-password="signupPassword"
+aria-label="Show password">
+
+<i class="bi bi-eye"></i>
+
+</button>
+
+</div>
+
+<button class="login-btn" type="submit">
+CREATE ACCOUNT
+<i class="bi bi-arrow-right"></i>
+</button>
+
+</form>
+
+<p class="switch-form">
+Already have an account?
+<button type="button" id="showLogin">Login</button>
+</p>
+
+</div>
+
+<!-- FORGOT PASSWORD -->
+
+<div id="forgotView" class="hidden">
+
+<h2 class="form-heading">
+Reset Password
+</h2>
+
+<p class="form-subtitle">
+Enter your email to request a password reset
+</p>
+
+<form id="forgotForm">
+
+<div class="field">
+
+<i class="bi bi-envelope"></i>
+
+<input
+type="email"
+id="resetEmail"
+placeholder="Email Address"
+autocomplete="email"
+required>
+
+</div>
+
+<button class="login-btn" type="submit">
+CONTINUE
+<i class="bi bi-arrow-right"></i>
+</button>
+
+</form>
+
+<p class="switch-form">
+Remember your password?
+<button type="button" id="backToLogin">Back to Login</button>
+</p>
+
+</div>
+
+<p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+
+</div>
+
+<div class="bottom-caption">
+© ALBERTO CLOCK — MORE THAN JUST TIME
+</div>
+
+</section>
+
+</div>
+
+<script>
+
+/* ========================================
+   INTERACTIVE LAMP CONTROLLER
+======================================== */
+
+const scene = document.getElementById("scene");
+
+const chain = document.getElementById("lampChain");
+
+const pullButton = document.getElementById("pullButton");
+
+const lampTitle = document.getElementById("lampTitle");
+
+const lampInstruction = document.getElementById("lampInstruction");
+
+const loginCard = document.getElementById("loginCard");
+
+let lampOn = false;
+
+let startY = 0;
+
+let isDragging = false;
+
+let didDrag = false;
+
+let dragDistance = 0;
+
+let animationLocked = false;
+
+
+/* TOGGLE LIGHT AND FORM */
+
+function toggleLamp(){
+
+ if(animationLocked) return;
+
+ animationLocked = true;
+
+ lampOn = !lampOn;
+
+ scene.classList.toggle("is-on",lampOn);
+
+ chain.setAttribute("aria-pressed",String(lampOn));
+
+ loginCard.setAttribute("aria-hidden",String(!lampOn));
+
+ loginCard.inert = !lampOn;
+
+ chain.classList.remove("pulled");
+
+ void chain.offsetWidth;
+
+ chain.classList.add("pulled");
+
+ if(lampOn){
+
+  lampTitle.textContent = "Welcome to Alberto Clock.";
+
+  lampInstruction.textContent = "PULL AGAIN TO TURN OFF";
+
+  pullButton.innerHTML =
+  '<i class="bi bi-arrow-down"></i> TURN OFF THE LAMP';
+
+ } else {
+
+  lampTitle.textContent = "A Little Light Changes Everything.";
+
+  lampInstruction.textContent = "PULL THE CHAIN TO BEGIN";
+
+  pullButton.innerHTML =
+  '<i class="bi bi-arrow-down"></i> PULL THE CHAIN';
+
+  if(loginCard.contains(document.activeElement)){
+   chain.focus();
+  }
+
+ }
+
+ setTimeout(()=>{
+  animationLocked = false;
+ },750);
+
+}
+
+
+/* DRAG CHAIN WITH MOUSE OR TOUCH */
+
+chain.addEventListener("pointerdown",function(e){
+
+ if(animationLocked) return;
+
+ isDragging = true;
+
+ didDrag = false;
+
+ dragDistance = 0;
+
+ startY = e.clientY;
+
+ chain.classList.add("pulling");
+
+ chain.setPointerCapture(e.pointerId);
+
+});
+
+chain.addEventListener("pointermove",function(e){
+
+ if(!isDragging) return;
+
+ const delta = Math.max(0,Math.min(75,e.clientY-startY));
+
+ dragDistance = Math.max(dragDistance,delta);
+
+ if(delta > 5) didDrag = true;
+
+ chain.style.transform = `translateY(${delta}px)`;
+
+});
+
+function finishPull(){
+
+ if(!isDragging) return;
+
+ isDragging = false;
+
+ chain.classList.remove("pulling");
+
+ chain.style.transform = "";
+
+ if(dragDistance >= 28){
+
+  didDrag = true;
+
+  toggleLamp();
+
+ }
+
+}
+
+chain.addEventListener("pointerup",finishPull);
+
+chain.addEventListener("pointercancel",function(){
+
+ isDragging = false;
+
+ chain.classList.remove("pulling");
+
+ chain.style.transform = "";
+
+});
+
+chain.addEventListener("click",function(){
+
+ if(didDrag){
+  didDrag = false;
+  return;
+ }
+
+ toggleLamp();
+
+});
+
+chain.addEventListener("keydown",function(e){
+
+ if(e.key === "Enter" || e.key === " "){
+
+  e.preventDefault();
+
+  toggleLamp();
+
+ }
+
+});
+
+pullButton.addEventListener("click",toggleLamp);
+
+
+/* ========================================
+   FORM SWITCHING
+======================================== */
+
+const loginView = document.getElementById("loginView");
+
+const signupView = document.getElementById("signupView");
+
+const forgotView = document.getElementById("forgotView");
+
+const formMessage = document.getElementById("formMessage");
+
+function showView(view){
+
+ loginView.classList.add("hidden");
+
+ signupView.classList.add("hidden");
+
+ forgotView.classList.add("hidden");
+
+ formMessage.textContent = "";
+
+ view.classList.remove("hidden");
+
+}
+
+document.getElementById("showSignup").addEventListener("click",()=>{
+ showView(signupView);
+});
+
+document.getElementById("showLogin").addEventListener("click",()=>{
+ showView(loginView);
+});
+
+document.getElementById("forgotLink").addEventListener("click",e=>{
+
+ e.preventDefault();
+
+ showView(forgotView);
+
+});
+
+document.getElementById("backToLogin").addEventListener("click",()=>{
+ showView(loginView);
+});
+
+
+/* ========================================
+   PASSWORD VISIBILITY
+======================================== */
+
+document.querySelectorAll(".password-toggle").forEach(button=>{
+
+ button.addEventListener("click",()=>{
+
+  const input = document.getElementById(button.dataset.password);
+
+  const visible = input.type === "password";
+
+  input.type = visible ? "text" : "password";
+
+  button.innerHTML = visible
+   ? '<i class="bi bi-eye-slash"></i>'
+   : '<i class="bi bi-eye"></i>';
+
+  button.setAttribute(
+   "aria-label",
+   visible ? "Hide password" : "Show password"
+  );
+
+ });
+
+});
+
+
+/* ========================================
+   AUTHENTICATION PLACEHOLDERS
+   Connect a secure backend before launch.
+======================================== */
+
+document.getElementById("loginForm").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ if(!this.reportValidity()) return;
+
+ formMessage.textContent =
+ "Login interface is ready. Connect your authentication backend to enable sign-in.";
+
+});
+
+document.getElementById("signupForm").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ if(!this.reportValidity()) return;
+
+ formMessage.textContent =
+ "Account creation requires a secure authentication backend.";
+
+});
+
+document.getElementById("forgotForm").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ if(!this.reportValidity()) return;
+
+ formMessage.textContent =
+ "Password reset requires an authentication service.";
+
+});
+
+document.getElementById("googleLogin").addEventListener("click",function(){
+
+ formMessage.textContent =
+ "Google sign-in requires OAuth configuration.";
+
+});
+
+</script>
+
+</body>
+</html>

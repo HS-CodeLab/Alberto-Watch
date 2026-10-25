@@ -1,0 +1,3324 @@
+<!doctype html>
+
+<html data-theme="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>All Collections | Alberto Clock</title>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("albertoTheme");
+        document.documentElement.dataset.theme =
+          savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : "light";
+      } catch (e) {
+        document.documentElement.dataset.theme = "light";
+      }
+    </script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="css/collection.css">
+  </head>
+  <body>
+    <!-- ==========================================
+     TOP BAR
+========================================== -->
+    <div class="fixed-header-shell" id="fixedHeaderShell">
+      <div class="topbar">
+        MORE THAN JUST TIME
+        <span class="mx-2">✦</span>
+        DISCOVER THE ART OF WATCHMAKING
+      </div>
+      <header class="site-header">
+        <nav class="navbar navbar-expand-lg main-navbar">
+          <div class="container">
+            <a class="navbar-brand" href="index.html">
+              <div class="brand-name">
+                <strong>ALBERTO</strong>
+                <small>— CLOCK —</small>
+              </div>
+            </a>
+            <button
+              aria-label="Toggle navigation"
+              class="navbar-toggler border-0"
+              data-bs-target="#mainMenu"
+              data-bs-toggle="collapse"
+              type="button"
+            >
+              <i class="bi bi-list fs-2" style="color: var(--heading)"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="collections.html"
+                    >Collections</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+              </ul>
+              <div class="header-actions">
+                <button aria-label="Search" id="searchBtn" type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+                <button
+                  aria-label="Switch theme"
+                  class="theme-toggle"
+                  id="themeToggle"
+                  type="button"
+                >
+                  <i class="bi bi-moon-stars"></i>
+                  <i class="bi bi-sun-fill"></i>
+                </button>
+                <a aria-label="Account" href="login.html">
+                  <i class="bi bi-person"></i>
+                </a>
+                <a aria-label="Cart" href="cart.html">
+                  <i class="bi bi-bag"></i>
+                  <span class="cart-count" id="cartCount">0</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </div>
+    <main id="collectionsPage">
+      <nav
+        aria-label="Collection categories"
+        class="collection-directory"
+        id="collectionDirectory"
+      >
+        <div class="container directory-inner">
+          <a href="#classic">Classic</a><a href="#luxury">Luxury</a
+          ><a href="#chronograph">Chronograph</a
+          ><a href="#minimalist">Minimalist</a><a href="#leather">Leather</a
+          ><a href="#executive">Executive</a><a href="#modern">Modern</a
+          ><a href="#statement">Statement</a><a href="#everyday">Everyday</a
+          ><a href="#signature">Signature</a>
+        </div>
+      </nav>
+      <div class="global-filter-wrap" id="globalFilters">
+        <div class="container">
+          <div class="section-filter filter-pill global-filter">
+            <div class="filter-caption">
+              <i class="bi bi-sliders2"></i> EXPLORE COLLECTIONS
+              <span class="filter-count" id="globalCount">40 PIECES</span>
+            </div>
+            <div class="global-filter-controls">
+              <label for="globalCategory">COLLECTION</label
+              ><select aria-label="Choose collection" id="globalCategory">
+                <option value="all">All Collections</option>
+                <option value="classic">Classic</option>
+                <option value="luxury">Luxury</option>
+                <option value="chronograph">Chronograph</option>
+                <option value="minimalist">Minimalist</option>
+                <option value="leather">Leather</option>
+                <option value="executive">Executive</option>
+                <option value="modern">Modern</option>
+                <option value="statement">Statement</option>
+                <option value="everyday">Everyday</option>
+                <option value="signature">Signature</option>
+              </select>
+            </div>
+            <div
+              aria-label="Filter all watches"
+              class="filter-options"
+              role="group"
+            >
+              <button
+                aria-pressed="true"
+                class="filter-option active"
+                data-mode="all"
+                type="button"
+              >
+                All Watches</button
+              ><button
+                aria-pressed="false"
+                class="filter-option"
+                data-mode="new"
+                type="button"
+              >
+                New Arrivals</button
+              ><button
+                aria-pressed="false"
+                class="filter-option"
+                data-mode="featured"
+                type="button"
+              >
+                Featured</button
+              ><button
+                aria-pressed="false"
+                class="filter-option"
+                data-mode="under"
+                type="button"
+              >
+                Under Rs. 25K
+              </button>
+            </div>
+            <div class="filter-sort">
+              <label for="globalSort">SORT BY</label
+              ><select id="globalSort">
+                <option value="default">Default</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="az">Name: A to Z</option>
+              </select>
+            </div>
+            <button class="global-reset" id="resetFilters" type="button">
+              RESET
+            </button>
+          </div>
+        </div>
+      </div>
+      <section class="collection-edit collection-style-1" id="classic">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 01</div>
+              <h2>The Classic Edit</h2>
+              <p>Timeless silhouettes and enduring elegance.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Classic Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="1"
+                data-order="0"
+                data-price-value="12500"
+                data-search="heritage classic classic watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Heritage Classic"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Classic Watches</div>
+                  <h3>Heritage Classic</h3>
+                  <p class="product-description">
+                    Elegant dial with a timeless classic finish.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="12500">Rs. 12,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Classic Watches"
+                data-featured="false"
+                data-filter="classic"
+                data-id="2"
+                data-order="1"
+                data-price-value="15500"
+                data-search="silver legacy classic watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Silver Legacy"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Classic Watches</div>
+                  <h3>Silver Legacy</h3>
+                  <p class="product-description">
+                    Refined silver-tone styling for every occasion.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="15500">Rs. 15,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Classic Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="3"
+                data-order="2"
+                data-price-value="13500"
+                data-search="vintage signature classic watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CLASSIC WATCH 3 IMAGE HERE -->
+                  <img
+                    alt="Vintage Signature"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Classic Watches</div>
+                  <h3>Vintage Signature</h3>
+                  <p class="product-description">
+                    Vintage-inspired styling with modern charm.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="13500">Rs. 13,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Classic Watches"
+                data-featured="false"
+                data-filter="classic"
+                data-id="4"
+                data-order="3"
+                data-price-value="17500"
+                data-search="timeless steel classic watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Timeless Steel"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Classic Watches</div>
+                  <h3>Timeless Steel</h3>
+                  <p class="product-description">
+                    A versatile polished finish with timeless appeal.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="17500">Rs. 17,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-2" id="luxury">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 02</div>
+              <h2>The Luxury Edit</h2>
+              <p>Refined watches with a distinctive presence.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Luxury Watches"
+                data-featured="true"
+                data-filter="luxury"
+                data-id="9"
+                data-order="0"
+                data-price-value="28750"
+                data-search="imperial gold luxury watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Imperial Gold"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Luxury Watches</div>
+                  <h3>Imperial Gold</h3>
+                  <p class="product-description">
+                    A bold expression of premium luxury.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="28750">Rs. 28,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Luxury Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="10"
+                data-order="1"
+                data-price-value="32250"
+                data-search="royal prestige luxury watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Royal Prestige"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Luxury Watches</div>
+                  <h3>Royal Prestige</h3>
+                  <p class="product-description">
+                    An elegant statement with rich detailing.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="32250">Rs. 32,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Luxury Watches"
+                data-featured="true"
+                data-filter="luxury"
+                data-id="11"
+                data-order="2"
+                data-price-value="29750"
+                data-search="golden hour luxury watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Golden Hour"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Luxury Watches</div>
+                  <h3>Golden Hour</h3>
+                  <p class="product-description">
+                    A sophisticated expression of modern luxury.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="29750">Rs. 29,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Luxury Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="12"
+                data-order="3"
+                data-price-value="35250"
+                data-search="midnight luxe luxury watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE LUXURY WATCH 4 IMAGE HERE -->
+                  <img
+                    alt="Midnight Luxe"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Luxury Watches</div>
+                  <h3>Midnight Luxe</h3>
+                  <p class="product-description">
+                    Dark, elegant and exceptionally stylish.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="35250">Rs. 35,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-3" id="chronograph">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 03</div>
+              <h2>The Chronograph Edit</h2>
+              <p>Sport-inspired design and precision.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Chronograph Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="17"
+                data-order="0"
+                data-price-value="23000"
+                data-search="chrono master chronograph watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Chrono Master"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Chronograph Watches</div>
+                  <h3>Chrono Master</h3>
+                  <p class="product-description">
+                    Sport-inspired styling with a bold presence.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="23000">Rs. 23,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Chronograph Watches"
+                data-featured="false"
+                data-filter="chronograph"
+                data-id="18"
+                data-order="1"
+                data-price-value="25000"
+                data-search="sport precision chronograph watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Sport Precision"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Chronograph Watches</div>
+                  <h3>Sport Precision</h3>
+                  <p class="product-description">
+                    Sport-inspired design with a striking dial.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="25000">Rs. 25,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Chronograph Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="19"
+                data-order="2"
+                data-price-value="27000"
+                data-search="urban chrono chronograph watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Urban Chrono"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Chronograph Watches</div>
+                  <h3>Urban Chrono</h3>
+                  <p class="product-description">
+                    Confident detailing and contemporary character.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="27000">Rs. 27,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Chronograph Watches"
+                data-featured="false"
+                data-filter="chronograph"
+                data-id="20"
+                data-order="3"
+                data-price-value="29400"
+                data-search="chrono elite chronograph watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 4 IMAGE HERE -->
+                  <img
+                    alt="Chrono Elite"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Chronograph Watches</div>
+                  <h3>Chrono Elite</h3>
+                  <p class="product-description">
+                    A commanding modern chronograph design.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="29400">Rs. 29,400</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-4" id="minimalist">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 04</div>
+              <h2>The Minimalist Edit</h2>
+              <p>Clean lines and effortless sophistication.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Minimalist Watches"
+                data-featured="true"
+                data-filter="minimalist"
+                data-id="25"
+                data-order="0"
+                data-price-value="12250"
+                data-search="pure form minimalist watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Pure Form"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Minimalist Watches</div>
+                  <h3>Pure Form</h3>
+                  <p class="product-description">
+                    Minimal detailing with timeless simplicity.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="12250">Rs. 12,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Minimalist Watches"
+                data-featured="false"
+                data-filter="minimalist"
+                data-id="26"
+                data-order="1"
+                data-price-value="15250"
+                data-search="modern line minimalist watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Modern Line"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Minimalist Watches</div>
+                  <h3>Modern Line</h3>
+                  <p class="product-description">
+                    Clean lines for understated everyday elegance.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="15250">Rs. 15,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Minimalist Watches"
+                data-featured="true"
+                data-filter="minimalist"
+                data-id="27"
+                data-order="2"
+                data-price-value="12250"
+                data-search="pure form minimalist watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Pure Form"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Minimalist Watches</div>
+                  <h3>Pure Form</h3>
+                  <p class="product-description">
+                    Minimal detailing with timeless simplicity.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="12250">Rs. 12,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Minimalist Watches"
+                data-featured="false"
+                data-filter="minimalist"
+                data-id="28"
+                data-order="3"
+                data-price-value="15250"
+                data-search="modern line minimalist watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Modern Line"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Minimalist Watches</div>
+                  <h3>Modern Line</h3>
+                  <p class="product-description">
+                    Clean lines for understated everyday elegance.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="15250">Rs. 15,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-5" id="leather">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 05</div>
+              <h2>The Leather Edit</h2>
+              <p>Warm textures and timeless character.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Leather Strap Watches"
+                data-featured="true"
+                data-filter="leather"
+                data-id="33"
+                data-order="0"
+                data-price-value="15500"
+                data-search="brown heritage leather strap watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Brown Heritage"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Leather Strap Watches</div>
+                  <h3>Brown Heritage</h3>
+                  <p class="product-description">
+                    Warm leather styling with classic elegance.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="15500">Rs. 15,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Leather Strap Watches"
+                data-featured="false"
+                data-filter="leather"
+                data-id="34"
+                data-order="1"
+                data-price-value="20500"
+                data-search="midnight leather leather strap watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Midnight Leather"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Leather Strap Watches</div>
+                  <h3>Midnight Leather</h3>
+                  <p class="product-description">
+                    A refined leather-inspired signature style.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="20500">Rs. 20,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Leather Strap Watches"
+                data-featured="true"
+                data-filter="leather"
+                data-id="35"
+                data-order="2"
+                data-price-value="15500"
+                data-search="brown heritage leather strap watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Brown Heritage"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Leather Strap Watches</div>
+                  <h3>Brown Heritage</h3>
+                  <p class="product-description">
+                    Warm leather styling with classic elegance.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="15500">Rs. 15,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Leather Strap Watches"
+                data-featured="false"
+                data-filter="leather"
+                data-id="36"
+                data-order="3"
+                data-price-value="20500"
+                data-search="midnight leather leather strap watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Midnight Leather"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Leather Strap Watches</div>
+                  <h3>Midnight Leather</h3>
+                  <p class="product-description">
+                    A refined leather-inspired signature style.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="20500">Rs. 20,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-6" id="executive">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 06</div>
+              <h2>The Executive Edit</h2>
+              <p>Confident styling for defining moments.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Executive Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="41"
+                data-order="0"
+                data-price-value="13750"
+                data-search="heritage classic classic watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Heritage Classic"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Executive Watches</div>
+                  <h3>Heritage Classic</h3>
+                  <p class="product-description">
+                    Elegant dial with a timeless classic finish.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="13750">Rs. 13,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Executive Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="42"
+                data-order="1"
+                data-price-value="29750"
+                data-search="imperial gold luxury watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Imperial Gold"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Executive Watches</div>
+                  <h3>Imperial Gold</h3>
+                  <p class="product-description">
+                    A bold expression of premium luxury.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="29750">Rs. 29,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Executive Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="43"
+                data-order="2"
+                data-price-value="23750"
+                data-search="chrono master chronograph watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Chrono Master"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Executive Watches</div>
+                  <h3>Chrono Master</h3>
+                  <p class="product-description">
+                    Sport-inspired styling with a bold presence.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="23750">Rs. 23,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Executive Watches"
+                data-featured="false"
+                data-filter="minimalist"
+                data-id="44"
+                data-order="3"
+                data-price-value="12750"
+                data-search="pure form minimalist watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Pure Form"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Executive Watches</div>
+                  <h3>Pure Form</h3>
+                  <p class="product-description">
+                    Minimal detailing with timeless simplicity.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="12750">Rs. 12,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-7" id="modern">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 07</div>
+              <h2>The Modern Edit</h2>
+              <p>Contemporary details with everyday versatility.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Modern Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="49"
+                data-order="0"
+                data-price-value="17000"
+                data-search="silver legacy classic watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Silver Legacy"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Modern Watches</div>
+                  <h3>Silver Legacy</h3>
+                  <p class="product-description">
+                    Refined silver-tone styling for every occasion.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="17000">Rs. 17,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Modern Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="50"
+                data-order="1"
+                data-price-value="33500"
+                data-search="royal prestige luxury watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Royal Prestige"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Modern Watches</div>
+                  <h3>Royal Prestige</h3>
+                  <p class="product-description">
+                    An elegant statement with rich detailing.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="33500">Rs. 33,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Modern Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="51"
+                data-order="2"
+                data-price-value="26000"
+                data-search="sport precision chronograph watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Sport Precision"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Modern Watches</div>
+                  <h3>Sport Precision</h3>
+                  <p class="product-description">
+                    Sport-inspired design with a striking dial.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="26000">Rs. 26,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Modern Watches"
+                data-featured="false"
+                data-filter="minimalist"
+                data-id="52"
+                data-order="3"
+                data-price-value="16000"
+                data-search="modern line minimalist watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Modern Line"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Modern Watches</div>
+                  <h3>Modern Line</h3>
+                  <p class="product-description">
+                    Clean lines for understated everyday elegance.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="16000">Rs. 16,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-8" id="statement">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 08</div>
+              <h2>The Statement Edit</h2>
+              <p>Bold expressions for memorable occasions.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Statement Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="57"
+                data-order="0"
+                data-price-value="15250"
+                data-search="vintage signature classic watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CLASSIC WATCH 3 IMAGE HERE -->
+                  <img
+                    alt="Vintage Signature"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Statement Watches</div>
+                  <h3>Vintage Signature</h3>
+                  <p class="product-description">
+                    Vintage-inspired styling with modern charm.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="15250">Rs. 15,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Statement Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="58"
+                data-order="1"
+                data-price-value="31250"
+                data-search="golden hour luxury watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Golden Hour"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Statement Watches</div>
+                  <h3>Golden Hour</h3>
+                  <p class="product-description">
+                    A sophisticated expression of modern luxury.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="31250">Rs. 31,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Statement Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="59"
+                data-order="2"
+                data-price-value="28250"
+                data-search="urban chrono chronograph watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Urban Chrono"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Statement Watches</div>
+                  <h3>Urban Chrono</h3>
+                  <p class="product-description">
+                    Confident detailing and contemporary character.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="28250">Rs. 28,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Statement Watches"
+                data-featured="false"
+                data-filter="leather"
+                data-id="60"
+                data-order="3"
+                data-price-value="16250"
+                data-search="brown heritage leather strap watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Brown Heritage"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Statement Watches</div>
+                  <h3>Brown Heritage</h3>
+                  <p class="product-description">
+                    Warm leather styling with classic elegance.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="16250">Rs. 16,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-9" id="everyday">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 09</div>
+              <h2>The Everyday Edit</h2>
+              <p>Easy elegance for every day.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Everyday Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="65"
+                data-order="0"
+                data-price-value="19500"
+                data-search="timeless steel classic watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Timeless Steel"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Everyday Watches</div>
+                  <h3>Timeless Steel</h3>
+                  <p class="product-description">
+                    A versatile polished finish with timeless appeal.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="19500">Rs. 19,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Everyday Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="66"
+                data-order="1"
+                data-price-value="37000"
+                data-search="midnight luxe luxury watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LUXURY WATCH 4 IMAGE HERE -->
+                  <img
+                    alt="Midnight Luxe"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Everyday Watches</div>
+                  <h3>Midnight Luxe</h3>
+                  <p class="product-description">
+                    Dark, elegant and exceptionally stylish.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="37000">Rs. 37,000</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Everyday Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="67"
+                data-order="2"
+                data-price-value="30900"
+                data-search="chrono elite chronograph watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 4 IMAGE HERE -->
+                  <img
+                    alt="Chrono Elite"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Everyday Watches</div>
+                  <h3>Chrono Elite</h3>
+                  <p class="product-description">
+                    A commanding modern chronograph design.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="30900">Rs. 30,900</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Everyday Watches"
+                data-featured="false"
+                data-filter="leather"
+                data-id="68"
+                data-order="3"
+                data-price-value="21500"
+                data-search="midnight leather leather strap watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Midnight Leather"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Everyday Watches</div>
+                  <h3>Midnight Leather</h3>
+                  <p class="product-description">
+                    A refined leather-inspired signature style.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="21500">Rs. 21,500</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="collection-edit collection-style-10" id="signature">
+        <div class="container">
+          <div class="edit-heading">
+            <div>
+              <div class="eyebrow">ALBERTO CLOCK / COLLECTION 10</div>
+              <h2>The Signature Edit</h2>
+              <p>A curated selection of Alberto favorites.</p>
+            </div>
+            <a class="collection-link" href="shop.html"
+              >SHOP ALL <i class="bi bi-arrow-up-right"></i
+            ></a>
+          </div>
+          <div class="row g-4 edit-grid">
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Signature Watches"
+                data-featured="true"
+                data-filter="classic"
+                data-id="73"
+                data-order="0"
+                data-price-value="14750"
+                data-search="heritage classic classic watches"
+                data-style="Elegant"
+                data-tag="New Arrival"
+              >
+                <div class="product-image">
+                  <span class="product-label">NEW</span>
+                  <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Heritage Classic"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Signature Watches</div>
+                  <h3>Heritage Classic</h3>
+                  <p class="product-description">
+                    Elegant dial with a timeless classic finish.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="14750">Rs. 14,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Signature Watches"
+                data-featured="false"
+                data-filter="luxury"
+                data-id="74"
+                data-order="1"
+                data-price-value="34250"
+                data-search="royal prestige luxury watches"
+                data-style="Bold"
+                data-tag="Bestseller"
+              >
+                <div class="product-image">
+                  <span class="product-label">BESTSELLER</span>
+                  <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Royal Prestige"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Signature Watches</div>
+                  <h3>Royal Prestige</h3>
+                  <p class="product-description">
+                    An elegant statement with rich detailing.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="34250">Rs. 34,250</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Signature Watches"
+                data-featured="true"
+                data-filter="chronograph"
+                data-id="75"
+                data-order="2"
+                data-price-value="28750"
+                data-search="urban chrono chronograph watches"
+                data-style="Refined"
+                data-tag="Exclusive"
+              >
+                <div class="product-image">
+                  <span class="product-label">EXCLUSIVE</span>
+                  <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Urban Chrono"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Signature Watches</div>
+                  <h3>Urban Chrono</h3>
+                  <p class="product-description">
+                    Confident detailing and contemporary character.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="28750">Rs. 28,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-xl-3 col-md-6 col-6">
+              <article
+                class="product-card"
+                data-category="Signature Watches"
+                data-featured="false"
+                data-filter="leather"
+                data-id="76"
+                data-order="3"
+                data-price-value="21750"
+                data-search="midnight leather leather strap watches"
+                data-style="Versatile"
+                data-tag="Popular"
+              >
+                <div class="product-image">
+                  <span class="product-label">POPULAR</span>
+                  <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+                  <img
+                    alt="Midnight Leather"
+                    loading="lazy"
+                    src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&amp;fit=crop&amp;w=800&amp;h=950&amp;q=85"
+                  />
+                  <button
+                    class="quick-view open-product"
+                    data-bs-target="#productDetailsModal"
+                    data-bs-toggle="modal"
+                    type="button"
+                  >
+                    <i class="bi bi-eye me-2"></i>
+                    QUICK VIEW
+                  </button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">Signature Watches</div>
+                  <h3>Midnight Leather</h3>
+                  <p class="product-description">
+                    A refined leather-inspired signature style.
+                  </p>
+                  <div class="product-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span>Premium Collection</span>
+                  </div>
+                  <div class="product-bottom">
+                    <div class="product-price">
+                      <strong data-price="21750">Rs. 21,750</strong>
+                    </div>
+                    <div class="product-buttons">
+                      <button class="btn-cart add-to-cart" type="button">
+                        <i class="bi bi-bag-plus me-1"></i>
+                        ADD TO CART
+                      </button>
+                      <button
+                        class="btn-details open-product"
+                        data-bs-target="#productDetailsModal"
+                        data-bs-toggle="modal"
+                        type="button"
+                      >
+                        <i class="bi bi-eye me-1"></i>
+                        DETAILS
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ==========================================
+     HEADER
+========================================== -->
+    <!-- ==========================================
+     HERO SECTION
+
+     HERO PICTURE CHANGE KARNE KE LIYE
+     NEECHE IMG TAG KA SRC CHANGE KARO.
+========================================== -->
+    <!-- ==========================================
+     COUNTER SECTION
+========================================== -->
+    <!-- ========================================================
+     ALL FIVE COLLECTIONS
+
+     IMPORTANT:
+     AB HAR PRODUCT HTML MEIN LIKHA HUA HAI.
+     PICTURE CHANGE KARNE KE LIYE SIRF IMG SRC CHANGE KARO.
+======================================================== -->
+    <!-- ==========================================
+     PRODUCT MODAL
+
+     MODAL IMAGE IS ALSO AN HTML IMG TAG.
+     JS ONLY COPIES SRC FROM CLICKED PRODUCT.
+========================================== -->
+    <div
+      aria-hidden="true"
+      aria-labelledby="modalProductTitle"
+      class="modal fade product-modal"
+      id="productDetailsModal"
+      tabindex="-1"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <button
+            aria-label="Close"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            type="button"
+          ></button>
+          <div class="modal-body p-0">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <div class="modal-image">
+                  <img alt="Selected Watch" id="modalProductImage" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="modal-info">
+                  <div class="modal-category" id="modalCategory"></div>
+                  <h2 class="modal-product-title" id="modalProductTitle"></h2>
+                  <div class="modal-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <span class="ms-2 small">Premium Collection</span>
+                  </div>
+                  <div class="modal-price" id="modalPrice"></div>
+                  <p class="modal-description" id="modalDescription"></p>
+                  <div class="modal-features">
+                    <p>
+                      <i class="bi bi-check-circle"></i>
+                      Premium Watch Design
+                    </p>
+                    <p>
+                      <i class="bi bi-check-circle"></i>
+                      Comfortable Everyday Wear
+                    </p>
+                    <p>
+                      <i class="bi bi-check-circle"></i>
+                      Elegant Finishing
+                    </p>
+                    <p class="mb-0">
+                      <i class="bi bi-check-circle"></i>
+                      Carefully Selected Materials
+                    </p>
+                  </div>
+                  <label class="small fw-bold mb-2" for="modalQuantity">
+                    QUANTITY
+                  </label>
+                  <div class="quantity-selector">
+                    <button
+                      aria-label="Decrease quantity"
+                      id="quantityMinus"
+                      type="button"
+                    >
+                      −
+                    </button>
+                    <input
+                      id="modalQuantity"
+                      max="99"
+                      min="1"
+                      type="number"
+                      value="1"
+                    />
+                    <button
+                      aria-label="Increase quantity"
+                      id="quantityPlus"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="modal-add-cart"
+                    id="modalAddCart"
+                    type="button"
+                  >
+                    <i class="bi bi-bag-plus me-2"></i>
+                    ADD TO CART
+                  </button>
+                  <button
+                    class="modal-whatsapp-order"
+                    id="modalWhatsappOrder"
+                    type="button"
+                    aria-label="Order selected watch on WhatsApp"
+                  >
+                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ==========================================
+     EDITORIAL SECTION
+
+     EDITORIAL PICTURE IS NOW HTML IMG TAG.
+========================================== -->
+    <!-- ==========================================
+     NEWSLETTER
+========================================== -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <div class="eyebrow mb-3">STAY CONNECTED</div>
+            <h2>Join the Alberto Circle.</h2>
+            <p>Discover new collections and exclusive updates.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="newsletter-form" id="newsletterForm">
+              <input
+                aria-label="Email address"
+                placeholder="Enter your email address"
+                required=""
+                type="email"
+              />
+              <button type="submit">
+                SUBSCRIBE
+
+                <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </form>
+            <p class="mt-2 mb-0" id="newsletterMessage" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==========================================
+     FOOTER - TEXT BRAND ONLY
+========================================== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <a class="footer-brand" href="index.html">
+              <strong>ALBERTO</strong>
+              <small>— CLOCK —</small>
+            </a>
+            <p class="footer-description">
+              More than just time. Discover a world where elegance,
+              individuality and precision come together.
+            </p>
+            <div class="socials">
+              <a aria-label="Facebook" href="#">
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a aria-label="Instagram" href="#">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <a aria-label="Pinterest" href="#">
+                <i class="bi bi-pinterest"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h5>Explore</h5>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="shop.html">Shop All</a></li>
+              <li><a href="about.html">Our Story</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5>Collections</h5>
+            <ul>
+              <li><a href="shop.html?category=classic">Classic Watches</a></li>
+              <li><a href="shop.html?category=luxury">Luxury Watches</a></li>
+              <li>
+                <a href="shop.html?category=chronograph">Chronograph Watches</a>
+              </li>
+              <li>
+                <a href="shop.html?category=minimalist">Minimalist Watches</a>
+              </li>
+              <li>
+                <a href="shop.html?category=leather">Leather Strap Watches</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5>Customer Care</h5>
+            <ul>
+              <li><a href="helpsupport.html">Help &amp; Support</a></li>
+              <li><a href="shipping.html">Shipping Information</a></li>
+              <li><a href="contact.html">Returns &amp; Exchanges</a></li>
+              <li><a href="contact.html">Warranty</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>
+            © <span id="year"></span>
+            Alberto Clock. All Rights Reserved.
+          </span>
+          <span>MORE THAN JUST TIME ✦ ALBERTO CLOCK</span>
+        </div>
+      </div>
+    </footer>
+    <!-- ==========================================
+     CART TOAST
+========================================== -->
+    <div aria-live="polite" class="cart-toast" id="cartToast" role="status">
+      <i class="bi bi-check-circle-fill me-2"></i>
+      <span id="toastMessage">Added to cart</span>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/collection.js"></script>
+  </body>
+</html>

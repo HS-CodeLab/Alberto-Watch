@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Alberto Clock | More Than Just Time
+  </title>
+  <script>
+   try {
+    const savedTheme = localStorage.getItem("albertoTheme");
+    document.documentElement.dataset.theme =
+        savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : "light";
+} catch(e) {
+    document.documentElement.dataset.theme = "light";
+}
+  </script>
+  <script>
+   /* Reload = show intro. Return from another page = skip intro. */
+   (function () {
+     const nav = performance.getEntriesByType('navigation')[0];
+     const type = nav ? nav.type : 'navigate';
+     let fromAnotherPage = false;
+     try {
+       fromAnotherPage = sessionStorage.getItem('albertoReturningHome') === '1';
+       sessionStorage.removeItem('albertoReturningHome');
+     } catch (e) {}
+     if (type !== 'reload' && (fromAnotherPage || type === 'back_forward')) {
+       document.documentElement.classList.add('alberto-skip-intro');
+     }
+   })();
+  </script>
+  <style>
+   html.alberto-skip-intro #watchIntro { display:none !important; }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  
+  <link rel="stylesheet" href="css/index.css">
+ </head>
+ <body>
+  <!-- Full-screen interactive watch introduction -->
+  <div aria-label="Unlock Alberto Clock website" aria-modal="true" class="watch-intro" id="watchIntro" role="dialog">
+   <div class="intro-top">
+    <strong>
+     ALBERTO
+    </strong>
+    — CLOCK —
+   </div>
+   <div aria-label="Luxury watch face with clickable hands" class="intro-stage">
+    <div class="intro-halo">
+    </div>
+    <div class="intro-case">
+     <div class="intro-dial">
+      <div class="intro-ticks">
+      </div>
+      <div class="intro-ticks major">
+      </div>
+      <span class="intro-numeral n12">
+       XII
+      </span>
+      <span class="intro-numeral n3">
+       III
+      </span>
+      <span class="intro-numeral n6">
+       VI
+      </span>
+      <span class="intro-numeral n9">
+       IX
+      </span>
+      <div class="intro-dial-brand">
+       ALBERTO
+       <small>
+        TIME IS ART
+       </small>
+      </div>
+      <div class="intro-dial-bottom">
+       SWISS INSPIRED DESIGN
+      </div>
+      <button aria-label="Turn the hour hand to enter website" class="intro-hand hour" type="button">
+      </button>
+      <button aria-label="Turn the minute hand to enter website" class="intro-hand minute" type="button">
+      </button>
+      <button aria-label="Turn the second hand to enter website" class="intro-hand second" type="button">
+      </button>
+      <div class="intro-pin">
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="intro-bottom">
+    <div class="intro-instruction">
+     <i class="bi bi-hand-index-thumb">
+     </i>
+     TOUCH THE HANDS. UNLOCK TIME.
+    </div>
+    <button class="intro-enter" id="introEnter" type="button">
+     ENTER ALBERTO CLOCK
+     <i class="bi bi-arrow-right ms-2">
+     </i>
+    </button>
+   </div>
+  </div>
+  <!-- ==========================================
+     TOP BAR
+========================================== -->
+  <div class="fixed-header-shell" id="fixedHeaderShell">
+   <div class="topbar">
+    MORE THAN JUST TIME
+    <span class="mx-2">
+     ✦
+    </span>
+    DISCOVER THE ART OF WATCHMAKING
+   </div>
+   <header class="site-header">
+    <nav class="navbar navbar-expand-lg main-navbar">
+     <div class="container">
+      <a class="navbar-brand" href="index.html">
+       <div class="brand-name">
+        <strong>
+         ALBERTO
+        </strong>
+        <small>
+         — CLOCK —
+        </small>
+       </div>
+      </a>
+      <button aria-label="Toggle navigation" class="navbar-toggler border-0" data-bs-target="#mainMenu" data-bs-toggle="collapse" type="button">
+       <i class="bi bi-list fs-2" style="color:var(--heading)">
+       </i>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+       <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+         <a class="nav-link active" href="index.html">
+          Home
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="shop.html">
+          Shop
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="collection.html">
+          Collections
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="about.html">
+          About
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="contact.html">
+          Contact
+         </a>
+        </li>
+       </ul>
+       <div class="header-actions">
+        <button aria-label="Search" id="searchBtn" type="button">
+         <i class="bi bi-search">
+         </i>
+        </button>
+        <button aria-label="Switch theme" class="theme-toggle" id="themeToggle" type="button">
+         <i class="bi bi-moon-stars">
+         </i>
+         <i class="bi bi-sun-fill">
+         </i>
+        </button>
+        <a aria-label="Account" href="login.html">
+         <i class="bi bi-person">
+         </i>
+        </a>
+        <a aria-label="Cart" href="cart.html">
+         <i class="bi bi-bag">
+         </i>
+         <span class="cart-count" id="cartCount">
+          0
+         </span>
+        </a>
+       </div>
+      </div>
+     </div>
+    </nav>
+   </header>
+  </div>
+  <!-- ==========================================
+     HEADER
+========================================== -->
+  <!-- ==========================================
+     HERO SECTION
+
+     HERO PICTURE CHANGE KARNE KE LIYE
+     NEECHE IMG TAG KA SRC CHANGE KARO.
+========================================== -->
+  <section class="hero">
+   <div class="container">
+    <div class="row">
+     <div class="col-lg-7 col-md-9">
+      <div class="hero-content">
+       <div class="eyebrow">
+        — THE ART OF TIMEKEEPING
+       </div>
+       <h1>
+        Time Defines
+        <em>
+         You.
+        </em>
+       </h1>
+       <p class="hero-description">
+        More than an accessory. A statement of character.
+                        Discover thoughtfully selected timepieces that celebrate
+                        every moment worth remembering.
+       </p>
+       <div class="d-flex flex-wrap gap-3">
+        <a class="btn-luxury" href="shop.html">
+         EXPLORE COLLECTION
+         <i class="bi bi-arrow-up-right">
+         </i>
+        </a>
+        <a class="btn-luxury btn-outline-luxury" href="#signature">
+         DISCOVER MORE
+        </a>
+       </div>
+       <div class="hero-benefits">
+        <div>
+         <i class="bi bi-shield-check">
+         </i>
+         Premium Quality
+        </div>
+        <div>
+         <i class="bi bi-truck">
+         </i>
+         Secure Delivery
+        </div>
+        <div>
+         <i class="bi bi-patch-check">
+         </i>
+         Warranty Support
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="hero-visual">
+    <!-- CHANGE HERO IMAGE HERE -->
+    <img alt="Alberto Clock Luxury Watch" fetchpriority="high" src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&amp;fit=crop&amp;w=1400&amp;q=90"/>
+   </div>
+  </section>
+  <!-- ==========================================
+     COUNTER SECTION
+========================================== -->
+  <section class="counter-section" id="counter">
+   <div class="container">
+    <div class="counter-intro">
+     <div class="eyebrow">
+      THE ALBERTO EXPERIENCE
+     </div>
+     <h2>
+      Excellence in Every Moment.
+     </h2>
+     <p>
+      A collection inspired by craftsmanship,
+                character and timeless style.
+     </p>
+    </div>
+    <div class="stats-grid">
+     <div class="stat-card">
+      <div class="stat-icon">
+       <i class="bi bi-people">
+       </i>
+      </div>
+      <div class="stat-number">
+       <span class="counter" data-target="5000">
+        0
+       </span>
+       +
+      </div>
+      <div class="stat-label">
+       Happy Customers
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       <i class="bi bi-watch">
+       </i>
+      </div>
+      <div class="stat-number">
+       <span class="counter" data-target="250">
+        0
+       </span>
+       +
+      </div>
+      <div class="stat-label">
+       Watch Designs
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       <i class="bi bi-award">
+       </i>
+      </div>
+      <div class="stat-number">
+       <span class="counter" data-target="10">
+        0
+       </span>
+       +
+      </div>
+      <div class="stat-label">
+       Years Experience
+      </div>
+     </div>
+     <div class="stat-card">
+      <div class="stat-icon">
+       <i class="bi bi-stars">
+       </i>
+      </div>
+      <div class="stat-number">
+       <span class="counter" data-target="98">
+        0
+       </span>
+       %
+      </div>
+      <div class="stat-label">
+       Satisfaction Rate
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- ========================================================
+     ALL FIVE COLLECTIONS
+
+     IMPORTANT:
+     AB HAR PRODUCT HTML MEIN LIKHA HUA HAI.
+     PICTURE CHANGE KARNE KE LIYE SIRF IMG SRC CHANGE KARO.
+======================================================== -->
+  <main id="collections">
+   <section class="collection-section signature-collection" id="signature">
+    <div class="container">
+     <div class="signature-heading">
+      <div>
+       <div class="eyebrow">
+        EXCLUSIVE WATCH COLLECTION
+       </div>
+       <h2>
+        Discover Our
+        <em>
+         Signature Collection.
+        </em>
+       </h2>
+       <p>
+        From timeless classics to contemporary statement pieces — discover your signature.
+       </p>
+      </div>
+     </div>
+     <div class="collection-rule">
+     </div>
+     <div class="row g-4 signature-grid">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Classic Watches" data-id="1">
+        <div class="product-image">
+         <!-- CHANGE CLASSIC WATCH 1 IMAGE HERE -->
+         <img alt="Heritage Classic" loading="lazy" src="image/Heritage_Class.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Classic Watches
+         </div>
+         <h3>
+          Heritage Classic
+         </h3>
+         <p class="product-description">
+          Elegant dial with a timeless classic finish.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="12500">
+            Rs. 12,500
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Classic Watches" data-id="3">
+        <div class="product-image">
+         <!-- CHANGE CLASSIC WATCH 3 IMAGE HERE -->
+         <img alt="Vintage Signature" loading="lazy" src="image/vintage.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Classic Watches
+         </div>
+         <h3>
+          Vintage Signature
+         </h3>
+         <p class="product-description">
+          Vintage-inspired styling with modern charm.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="13500">
+            Rs. 13,500
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Luxury Watches" data-id="5">
+        <div class="product-image">
+         <!-- CHANGE LUXURY WATCH 1 IMAGE HERE -->
+         <img alt="Imperial Gold" loading="lazy" src="image/Imperial Gold.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Luxury Watches
+         </div>
+         <h3>
+          Imperial Gold
+         </h3>
+         <p class="product-description">
+          A bold expression of premium luxury.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="28500">
+            Rs. 28,500
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Luxury Watches" data-id="8">
+        <div class="product-image">
+         <!-- CHANGE LUXURY WATCH 4 IMAGE HERE -->
+         <img alt="Midnight Luxe" loading="lazy" src="image/Midnight Luxe.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Luxury Watches
+         </div>
+         <h3>
+          Midnight Luxe
+         </h3>
+         <p class="product-description">
+          Dark, elegant and exceptionally stylish.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="35000">
+            Rs. 35,000
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Chronograph Watches" data-id="9">
+        <div class="product-image">
+         <!-- CHANGE CHRONOGRAPH WATCH 1 IMAGE HERE -->
+         <img alt="Chrono Master" loading="lazy" src="image/Chrono Master.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Chronograph Watches
+         </div>
+         <h3>
+          Chrono Master
+         </h3>
+         <p class="product-description">
+          Sport-inspired styling with a bold presence.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="22500">
+            Rs. 22,500
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Chronograph Watches" data-id="12">
+        <div class="product-image">
+         <!-- CHANGE CHRONOGRAPH WATCH 4 IMAGE HERE -->
+         <img alt="Chrono Elite" loading="lazy" src="image/Chrono Elite.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Chronograph Watches
+         </div>
+         <h3>
+          Chrono Elite
+         </h3>
+         <p class="product-description">
+          A commanding modern chronograph design.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="28900">
+            Rs. 28,900
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Minimalist Watches" data-id="13">
+        <div class="product-image">
+         <!-- CHANGE MINIMALIST WATCH 1 IMAGE HERE -->
+         <img alt="Pure Form" loading="lazy" src="image/Pure Form.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Minimalist Watches
+         </div>
+         <h3>
+          Pure Form
+         </h3>
+         <p class="product-description">
+          Minimal detailing with timeless simplicity.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="11500">
+            Rs. 11,500
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+       <article class="product-card" data-category="Leather Strap Watches" data-id="17">
+        <div class="product-image">
+         <!-- CHANGE LEATHER WATCH 1 IMAGE HERE -->
+         <img alt="Brown Heritage" loading="lazy" src="image/Brown Heritage.jpg"/>
+         <button class="quick-view open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+          <i class="bi bi-eye me-2">
+          </i>
+          QUICK VIEW
+         </button>
+        </div>
+        <div class="product-info">
+         <div class="product-category">
+          Leather Strap Watches
+         </div>
+         <h3>
+          Brown Heritage
+         </h3>
+         <p class="product-description">
+          Warm leather styling with classic elegance.
+         </p>
+         <div class="product-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span>
+           Premium Collection
+          </span>
+         </div>
+         <div class="product-bottom">
+          <div class="product-price">
+           <strong data-price="14500">
+            Rs. 14,500
+           </strong>
+           <small>
+            ALBERTO CLOCK
+           </small>
+          </div>
+          <div class="product-buttons">
+           <button class="btn-cart add-to-cart" type="button">
+            <i class="bi bi-bag-plus me-1">
+            </i>
+            ADD TO CART
+           </button>
+           <button class="btn-details open-product" data-bs-target="#productDetailsModal" data-bs-toggle="modal" type="button">
+            <i class="bi bi-eye me-1">
+            </i>
+            DETAILS
+           </button>
+          </div>
+         </div>
+        </div>
+       </article>
+      </div>
+     </div>
+     <div class="explore-wrap">
+      <span class="explore-rule">
+      </span>
+      <a class="btn-luxury explore-more" href="collection.html">
+       EXPLORE MORE WATCHES
+       <i class="bi bi-arrow-up-right">
+       </i>
+      </a>
+      <span class="explore-rule">
+      </span>
+     </div>
+    </div>
+   </section>
+  </main>
+  <!-- ==========================================
+     PRODUCT MODAL
+
+     MODAL IMAGE IS ALSO AN HTML IMG TAG.
+     JS ONLY COPIES SRC FROM CLICKED PRODUCT.
+========================================== -->
+  <div aria-hidden="true" aria-labelledby="modalProductTitle" class="modal fade product-modal" id="productDetailsModal" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+     </button>
+     <div class="modal-body p-0">
+      <div class="row g-0">
+       <div class="col-md-6">
+        <div class="modal-image">
+         <img alt="Selected Watch" id="modalProductImage"/>
+        </div>
+       </div>
+       <div class="col-md-6">
+        <div class="modal-info">
+         <div class="modal-category" id="modalCategory">
+         </div>
+         <h2 class="modal-product-title" id="modalProductTitle">
+         </h2>
+         <div class="modal-rating">
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <i class="bi bi-star-fill">
+          </i>
+          <span class="ms-2 small">
+           Premium Collection
+          </span>
+         </div>
+         <div class="modal-price" id="modalPrice">
+         </div>
+         <p class="modal-description" id="modalDescription">
+         </p>
+         <div class="modal-features">
+          <p>
+           <i class="bi bi-check-circle">
+           </i>
+           Premium Watch Design
+          </p>
+          <p>
+           <i class="bi bi-check-circle">
+           </i>
+           Comfortable Everyday Wear
+          </p>
+          <p>
+           <i class="bi bi-check-circle">
+           </i>
+           Elegant Finishing
+          </p>
+          <p class="mb-0">
+           <i class="bi bi-check-circle">
+           </i>
+           Carefully Selected Materials
+          </p>
+         </div>
+         <label class="small fw-bold mb-2" for="modalQuantity">
+          QUANTITY
+         </label>
+         <div class="quantity-selector">
+          <button aria-label="Decrease quantity" id="quantityMinus" type="button">
+           −
+          </button>
+          <input id="modalQuantity" max="99" min="1" type="number" value="1"/>
+          <button aria-label="Increase quantity" id="quantityPlus" type="button">
+           +
+          </button>
+         </div>
+         <button class="modal-add-cart" id="modalAddCart" type="button">
+          <i class="bi bi-bag-plus me-2">
+          </i>
+          ADD TO CART
+         </button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- ==========================================
+     EDITORIAL SECTION
+
+     EDITORIAL PICTURE IS NOW HTML IMG TAG.
+========================================== -->
+  <section class="editorial">
+   <div class="editorial-image">
+    <!-- CHANGE EDITORIAL IMAGE HERE -->
+    <img alt="Alberto Clock Editorial Collection" loading="lazy" src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&amp;fit=crop&amp;w=1800&amp;q=85"/>
+   </div>
+   <div class="container">
+    <div class="eyebrow">
+     THE ALBERTO PHILOSOPHY
+    </div>
+    <h2>
+     Every Second Deserves Something Extraordinary.
+    </h2>
+    <p>
+     A watch is more than a way to measure time.
+            It is an expression of your journey, ambitions
+            and the moments that define you.
+    </p>
+    <a class="btn-luxury" href="about.html">
+     OUR STORY
+     <i class="bi bi-arrow-up-right">
+     </i>
+    </a>
+   </div>
+  </section>
+  <!-- ==========================================
+     NEWSLETTER
+========================================== -->
+  <section class="newsletter">
+   <div class="container">
+    <div class="row align-items-center g-4">
+     <div class="col-lg-6">
+      <div class="eyebrow mb-3">
+       STAY CONNECTED
+      </div>
+      <h2>
+       Join the Alberto Circle.
+      </h2>
+      <p>
+       Discover new collections and exclusive updates.
+      </p>
+     </div>
+     <div class="col-lg-6">
+      <form class="newsletter-form" id="newsletterForm">
+       <input aria-label="Email address" placeholder="Enter your email address" required="" type="email"/>
+       <button type="submit">
+        SUBSCRIBE
+        <i class="bi bi-arrow-right ms-2">
+        </i>
+       </button>
+      </form>
+      <p class="mt-2 mb-0" id="newsletterMessage" role="status">
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- ==========================================
+     FOOTER - TEXT BRAND ONLY
+========================================== -->
+  <footer class="footer">
+   <div class="container">
+    <div class="row g-5">
+     <div class="col-lg-4 col-md-6">
+      <a class="footer-brand" href="index.html">
+       <strong>
+        ALBERTO
+       </strong>
+       <small>
+        — CLOCK —
+       </small>
+      </a>
+      <p class="footer-description">
+       More than just time. Discover a world where elegance,
+                    individuality and precision come together.
+      </p>
+      <div class="socials">
+       <a aria-label="Facebook" href="#">
+        <i class="bi bi-facebook">
+        </i>
+       </a>
+       <a aria-label="Instagram" href="#">
+        <i class="bi bi-instagram">
+        </i>
+       </a>
+       <a aria-label="Pinterest" href="#">
+        <i class="bi bi-pinterest">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div class="col-lg-2 col-md-6">
+      <h5>
+       Explore
+      </h5>
+      <ul>
+       <li>
+        <a href="index.html">
+         Home
+        </a>
+       </li>
+       <li>
+        <a href="shop.html">
+         Shop All
+        </a>
+       </li>
+       <li>
+        <a href="about.html">
+         Our Story
+        </a>
+       </li>
+       <li>
+        <a href="contact.html">
+         Contact
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="col-lg-3 col-md-6">
+      <h5>
+       Collections
+      </h5>
+      <ul>
+       <li>
+        <a href="shop.html?category=classic">
+         Classic Watches
+        </a>
+       </li>
+       <li>
+        <a href="shop.html?category=luxury">
+         Luxury Watches
+        </a>
+       </li>
+       <li>
+        <a href="shop.html?category=chronograph">
+         Chronograph Watches
+        </a>
+       </li>
+       <li>
+        <a href="shop.html?category=minimalist">
+         Minimalist Watches
+        </a>
+       </li>
+       <li>
+        <a href="shop.html?category=leather">
+         Leather Strap Watches
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="col-lg-3 col-md-6">
+      <h5>
+       Customer Care
+      </h5>
+      <ul>
+       <li>
+        <a href="helpsupport.html">
+         Help &amp; Support
+        </a>
+       </li>
+       <li>
+        <a href="shipping.html">
+         Shipping Information
+        </a>
+       </li>
+       <li>
+        <a href="contact.html">
+         Returns &amp; Exchanges
+        </a>
+       </li>
+       <li>
+        <a href="contact.html">
+         Warranty
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <span>
+      ©
+      <span id="year">
+      </span>
+      Alberto Clock. All Rights Reserved.
+     </span>
+     <span>
+      MORE THAN JUST TIME ✦ ALBERTO CLOCK
+     </span>
+    </div>
+   </div>
+  </footer>
+  <!-- ==========================================
+     CART TOAST
+========================================== -->
+  <div aria-live="polite" class="cart-toast" id="cartToast" role="status">
+   <i class="bi bi-check-circle-fill me-2">
+   </i>
+   <span id="toastMessage">
+    Added to cart
+   </span>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <script src="JS/index.js"></script>
+
+ </body>
+</html>

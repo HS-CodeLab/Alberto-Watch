@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Shipping Information | ALBERTO CLOCK
+  </title>
+  <script>
+   try {
+            const saved = localStorage.getItem("albertoTheme");
+            document.documentElement.dataset.theme = saved === "dark" ? "dark" : "light";
+        } catch (error) {
+            document.documentElement.dataset.theme = "light";
+        }
+  </script>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+   :root,[data-theme="light"] {
+    color-scheme:light;
+    --body:#F3EEE7;
+    --surface:#FFFFFF;
+    --surface-alt:#F8F5F0;
+    --header:#F7F4EF;
+    --hero:#EEE9E1;
+    --heading:#09243B;
+    --text:#263441;
+    --muted:#78818A;
+    --gold:#B59665;
+    --border:#E6E0D7;
+    --button:#09243B;
+    --button-text:#FFFFFF;
+    --footer:#061827;
+    --shadow:0 18px 50px rgba(9,36,59,.09);
+}
+
+[data-theme="dark"] {
+    color-scheme:dark;
+    --body:#09131D;
+    --surface:#142534;
+    --surface-alt:#101F2D;
+    --header:#0D1C2A;
+    --hero:#101F2D;
+    --heading:#F4E9D8;
+    --text:#E8E4DE;
+    --muted:#AAB5BE;
+    --gold:#D5B783;
+    --border:#304352;
+    --button:#D5B783;
+    --button-text:#081827;
+    --footer:#060F18;
+    --shadow:0 18px 50px rgba(0,0,0,.25);
+}
+
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html {
+    scroll-behavior:smooth;
+    scroll-padding-top:110px;
+}
+
+body {
+    overflow-x:hidden;
+    background:var(--body);
+    color:var(--text);
+    font-family:'DM Sans',sans-serif;
+    transition:background .3s,color .3s;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+button,input {
+    font:inherit;
+}
+
+button,a {
+    -webkit-tap-highlight-color:transparent;
+}
+
+button:focus-visible,a:focus-visible {
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+}
+
+.topbar {
+    padding:10px 12px;
+    background:#09243B;
+    color:#fff;
+    font-size:10px;
+    letter-spacing:2px;
+    text-align:center;
+}
+
+.topbar span {
+    color:#D5B783;
+}
+
+.header-shell {
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 8px 28px rgba(0,0,0,.08);
+}
+
+header {
+    background:var(--header);
+    border-bottom:1px solid var(--border);
+}
+
+.nav {
+    display:flex;
+    max-width:1280px;
+    min-height:92px;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+    margin:auto;
+    padding:15px 24px;
+}
+
+.brand {
+    display:flex;
+    flex-shrink:0;
+    flex-direction:column;
+    align-items:center;
+}
+
+.brand strong {
+    color:var(--heading);
+    font-family:'Playfair Display',serif;
+    font-size:27px;
+    letter-spacing:5px;
+    line-height:1.2;
+}
+
+.brand small {
+    margin-top:5px;
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:6px;
+}
+
+.navlinks {
+    display:flex;
+    align-items:center;
+    gap:27px;
+}
+
+.navlinks a {
+    position:relative;
+    padding:12px 0;
+    color:var(--text);
+    font-size:12px;
+    font-weight:600;
+}
+
+.navlinks a::after {
+    position:absolute;
+    bottom:5px;
+    left:0;
+    width:0;
+    height:2px;
+    background:var(--gold);
+    content:'';
+    transition:width .25s;
+}
+
+.navlinks a:hover::after,.navlinks a.active::after {
+    width:100%;
+}
+
+.navlinks a:hover,.navlinks a.active {
+    color:var(--heading);
+}
+
+.actions {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.icon-btn,.menu-btn {
+    display:grid;
+    width:40px;
+    height:40px;
+    place-items:center;
+    border:1px solid var(--border);
+    border-radius:50%;
+    background:var(--surface);
+    color:var(--heading);
+    cursor:pointer;
+    font-size:17px;
+}
+
+.menu-btn {
+    display:none;
+}
+
+.hero {
+    position:relative;
+    overflow:hidden;
+    padding:78px 24px 80px;
+    background:var(--hero);
+}
+
+.hero::before,.hero::after {
+    position:absolute;
+    border:1px solid rgba(181,150,101,.22);
+    border-radius:50%;
+    content:'';
+    pointer-events:none;
+}
+
+.hero::before {
+    top:-240px;
+    right:-100px;
+    width:420px;
+    height:420px;
+}
+
+.hero::after {
+    right:9%;
+    bottom:-230px;
+    width:300px;
+    height:300px;
+}
+
+.hero-inner {
+    position:relative;
+    z-index:1;
+    display:grid;
+    max-width:1160px;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:55px;
+    margin:auto;
+}
+
+.eyebrow {
+    color:var(--gold);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+h1,h2,h3 {
+    color:var(--heading);
+    font-family:'Playfair Display',serif;
+    font-weight:500;
+}
+
+.hero h1 {
+    margin:19px 0;
+    font-size:clamp(44px,6vw,76px);
+    letter-spacing:-1.5px;
+    line-height:1.07;
+}
+
+.hero h1 em {
+    color:var(--gold);
+    font-weight:400;
+}
+
+.hero p {
+    max-width:530px;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
+}
+
+.hero-art {
+    position:relative;
+    display:grid;
+    min-height:280px;
+    place-items:center;
+}
+
+.art-circle {
+    position:relative;
+    display:grid;
+    width:min(320px,75vw);
+    aspect-ratio:1;
+    place-items:center;
+    border-radius:50%;
+    background:linear-gradient(145deg,#E9E0D2,#D6C7B1);
+    box-shadow:0 30px 70px rgba(9,36,59,.13);
+}
+
+.art-circle::before {
+    position:absolute;
+    inset:20px;
+    border:1px solid rgba(9,36,59,.18);
+    border-radius:50%;
+    content:'';
+}
+
+.shipping-emblem {
+    display:grid;
+    width:130px;
+    height:130px;
+    place-items:center;
+    border-radius:50%;
+    background:#09243B;
+    color:#D5B783;
+    box-shadow:0 20px 35px rgba(9,36,59,.28);
+    font-size:52px;
+    animation:float 4s ease-in-out infinite;
+}
+
+.orbit {
+    position:absolute;
+    inset:-18px;
+    border:1px solid rgba(181,150,101,.45);
+    border-radius:50%;
+    transform:rotate(-22deg) scaleY(.7);
+}
+
+@keyframes float {
+    0%,100% {
+        transform:translateY(0);
+    }
+
+    50% {
+        transform:translateY(-10px);
+    }
+
+}
+
+.quick-strip {
+    position:relative;
+    z-index:2;
+    display:grid;
+    max-width:1120px;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin:-27px auto 0;
+    padding:0 22px;
+}
+
+.quick-card {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:23px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+    transition:transform .25s,border-color .25s;
+}
+
+.quick-card:hover {
+    transform:translateY(-5px);
+    border-color:var(--gold);
+}
+
+.quick-icon {
+    display:grid;
+    width:46px;
+    height:46px;
+    flex:0 0 46px;
+    place-items:center;
+    border-radius:14px;
+    background:var(--surface-alt);
+    color:var(--gold);
+    font-size:21px;
+}
+
+.quick-card h3 {
+    margin-bottom:5px;
+    font-size:18px;
+}
+
+.quick-card p {
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.6;
+}
+
+.section {
+    padding:85px 24px;
+}
+
+.section.alt {
+    background:var(--surface-alt);
+}
+
+.section-inner {
+    max-width:1120px;
+    margin:auto;
+}
+
+.section-heading {
+    margin-bottom:40px;
+    text-align:center;
+}
+
+.section-heading h2 {
+    margin:12px 0;
+    font-size:clamp(32px,4vw,46px);
+}
+
+.section-heading p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+}
+
+.steps {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.step {
+    position:relative;
+    padding:30px 24px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--surface);
+    transition:transform .3s,border-color .3s;
+}
+
+.step:hover {
+    transform:translateY(-5px);
+    border-color:var(--gold);
+}
+
+.step-number {
+    display:block;
+    margin-bottom:24px;
+    color:var(--gold);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.step i {
+    display:block;
+    margin-bottom:20px;
+    color:var(--gold);
+    font-size:28px;
+}
+
+.step h3 {
+    margin-bottom:10px;
+    font-size:21px;
+}
+
+.step p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.8;
+}
+
+.info-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.info-card {
+    padding:32px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--surface);
+}
+
+.info-card i {
+    display:block;
+    margin-bottom:17px;
+    color:var(--gold);
+    font-size:26px;
+}
+
+.info-card h3 {
+    margin-bottom:12px;
+    font-size:24px;
+}
+
+.info-card p {
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.9;
+}
+
+.note {
+    margin-top:24px;
+    padding:22px 25px;
+    border-left:3px solid var(--gold);
+    border-radius:12px;
+    background:var(--surface);
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.9;
+}
+
+.note strong {
+    color:var(--heading);
+}
+
+.faq-layout {
+    display:grid;
+    grid-template-columns:.75fr 1.25fr;
+    align-items:start;
+    gap:55px;
+}
+
+.faq-intro h2 {
+    margin:15px 0;
+    font-size:clamp(34px,4vw,48px);
+    line-height:1.15;
+}
+
+.faq-intro p {
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+}
+
+.faq-list {
+    display:grid;
+    gap:11px;
+}
+
+.faq-item {
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--surface);
+}
+
+.faq-question {
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    padding:20px 22px;
+    border:0;
+    background:transparent;
+    color:var(--heading);
+    cursor:pointer;
+    font-size:13px;
+    font-weight:600;
+    text-align:left;
+}
+
+.faq-question i {
+    color:var(--gold);
+    transition:transform .25s;
+}
+
+.faq-answer {
+    display:none;
+    padding:0 22px 20px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.9;
+}
+
+.faq-item.open .faq-answer {
+    display:block;
+}
+
+.faq-item.open .faq-question i {
+    transform:rotate(45deg);
+}
+
+.cta {
+    position:relative;
+    overflow:hidden;
+    padding:55px;
+    border-radius:24px;
+    background:#09243B;
+    color:#fff;
+    text-align:center;
+}
+
+.cta::before {
+    position:absolute;
+    top:-130px;
+    right:-100px;
+    width:300px;
+    height:300px;
+    border:1px solid rgba(213,183,131,.2);
+    border-radius:50%;
+    content:'';
+}
+
+.cta h2 {
+    margin:13px 0;
+    color:#fff;
+    font-size:clamp(32px,4vw,44px);
+}
+
+.cta p {
+    max-width:550px;
+    margin:0 auto 26px;
+    color:#C0CBD2;
+    font-size:13px;
+    line-height:1.9;
+}
+
+.cta-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:13px;
+    padding:15px 23px;
+    border-radius:12px;
+    background:#D5B783;
+    color:#081827;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    transition:transform .25s;
+}
+
+.cta-btn:hover {
+    transform:translateY(-3px);
+}
+
+.footer {
+    padding:55px 24px 22px;
+    background:var(--footer);
+    color:#fff;
+}
+
+.footer-inner {
+    display:flex;
+    max-width:1120px;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:35px;
+    margin:auto;
+}
+
+.footer .brand {
+    align-items:flex-start;
+}
+
+.footer .brand strong {
+    color:#fff;
+}
+
+.footer p {
+    max-width:360px;
+    margin-top:20px;
+    color:#A7B0B8;
+    font-size:12px;
+    line-height:1.9;
+}
+
+.footer-links {
+    display:flex;
+    flex-wrap:wrap;
+    gap:23px;
+}
+
+.footer-links a {
+    color:#A7B0B8;
+    font-size:11px;
+}
+
+.footer-links a:hover {
+    color:#D5B783;
+}
+
+.footer-bottom {
+    display:flex;
+    max-width:1120px;
+    justify-content:space-between;
+    gap:15px;
+    margin:35px auto 0;
+    padding-top:20px;
+    border-top:1px solid #263847;
+    color:#87949F;
+    font-size:10px;
+}
+
+@media(max-width:900px) {
+    .nav {
+        min-height:78px;
+        flex-wrap:wrap;
+    }
+
+    .menu-btn {
+        display:grid;
+        order:3;
+    }
+
+    .navlinks {
+        display:none;
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        order:4;
+        gap:0;
+        padding:10px 0 15px;
+    }
+
+    .navlinks.show {
+        display:flex;
+    }
+
+    .navlinks a {
+        padding:13px 5px;
+        border-bottom:1px solid var(--border);
+    }
+
+    .navlinks a::after {
+        display:none;
+    }
+
+    .actions {
+        margin-left:auto;
+    }
+
+    .hero-inner {
+        grid-template-columns:1fr .7fr;
+        gap:25px;
+    }
+
+    .steps {
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .faq-layout {
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .footer-inner {
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:600px) {
+    .topbar {
+        font-size:8px;
+        letter-spacing:1px;
+    }
+
+    .nav {
+        padding:13px 17px;
+    }
+
+    .brand strong {
+        font-size:22px;
+        letter-spacing:3px;
+    }
+
+    .brand small {
+        font-size:8px;
+        letter-spacing:4px;
+    }
+
+    .actions {
+        gap:7px;
+    }
+
+    .icon-btn,.menu-btn {
+        width:36px;
+        height:36px;
+    }
+
+    .hero {
+        padding:55px 20px 48px;
+    }
+
+    .hero-inner {
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .hero h1 {
+        font-size:clamp(43px,12vw,62px);
+    }
+
+    .hero-art {
+        min-height:220px;
+    }
+
+    .art-circle {
+        width:210px;
+    }
+
+    .shipping-emblem {
+        width:95px;
+        height:95px;
+        font-size:39px;
+    }
+
+    .quick-strip {
+        grid-template-columns:1fr;
+        margin-top:0;
+        padding:18px 18px 0;
+    }
+
+    .quick-card,.step,.info-card {
+        border-radius:16px;
+    }
+
+    .quick-card {
+        padding:18px;
+    }
+
+    .section {
+        padding:65px 18px;
+    }
+
+    .steps,.info-grid {
+        grid-template-columns:1fr;
+    }
+
+    .cta {
+        padding:38px 22px;
+    }
+
+    .footer {
+        padding:45px 20px 20px;
+    }
+
+    .footer-bottom {
+        flex-direction:column;
+    }
+
+    .section-heading {
+        margin-bottom:30px;
+    }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+
+}
+  </style>
+ </head>
+ <body>
+  <div class="header-shell">
+   <div class="topbar">
+    MORE THAN JUST TIME
+    <span>
+     ✦
+    </span>
+    DELIVERY WITH CARE, EVERY STEP OF THE WAY
+   </div>
+   <header>
+    <nav aria-label="Main navigation" class="nav">
+     <a aria-label="Alberto Clock home" class="brand" href="index.html">
+      <strong>
+       ALBERTO
+      </strong>
+      <small>
+       &mdash; CLOCK &mdash;
+      </small>
+     </a>
+     <div class="navlinks" id="navLinks">
+      <a href="index.html">
+       Home
+      </a>
+      <a href="shop.html">
+       Shop
+      </a>
+      <a href="collection.html">
+       Collections
+      </a>
+      <a href="about.html">
+       About
+      </a>
+      <a href="contact.html">
+       Contact
+      </a>
+     </div>
+     <div class="actions">
+      <button aria-label="Toggle light and dark mode" class="icon-btn" id="themeToggle" type="button">
+       <i class="bi bi-moon-stars" id="themeIcon">
+       </i>
+      </button>
+      <button aria-expanded="false" aria-label="Open navigation menu" class="menu-btn" id="menuToggle" type="button">
+       <i class="bi bi-list">
+       </i>
+      </button>
+     </div>
+    </nav>
+   </header>
+  </div>
+  <main>
+   <section class="hero">
+    <div class="hero-inner">
+     <div>
+      <div class="eyebrow">
+       ALBERTO DELIVERY GUIDE
+      </div>
+      <h1>
+       Every journey.
+       <br/>
+       <em>
+        Handled with care.
+       </em>
+      </h1>
+      <p>
+       From the moment you place your order to the moment your timepiece arrives, explore how shipping and delivery work at ALBERTO CLOCK.
+      </p>
+     </div>
+     <div aria-hidden="true" class="hero-art">
+      <div class="art-circle">
+       <div class="orbit">
+       </div>
+       <div class="shipping-emblem">
+        <i class="bi bi-box-seam">
+        </i>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="quick-strip">
+    <article class="quick-card">
+     <div class="quick-icon">
+      <i class="bi bi-receipt">
+      </i>
+     </div>
+     <div>
+      <h3>
+       Order Confirmation
+      </h3>
+      <p>
+       Keep your order reference for future assistance.
+      </p>
+     </div>
+    </article>
+    <article class="quick-card">
+     <div class="quick-icon">
+      <i class="bi bi-truck">
+      </i>
+     </div>
+     <div>
+      <h3>
+       Delivery Updates
+      </h3>
+      <p>
+       Ask support for the latest status of your order.
+      </p>
+     </div>
+    </article>
+    <article class="quick-card">
+     <div class="quick-icon">
+      <i class="bi bi-headset">
+      </i>
+     </div>
+     <div>
+      <h3>
+       Here to Help
+      </h3>
+      <p>
+       Questions about shipping? Contact our team.
+      </p>
+     </div>
+    </article>
+   </div>
+   <section class="section" id="process">
+    <div class="section-inner">
+     <div class="section-heading">
+      <div class="eyebrow">
+       FROM CHECKOUT TO YOUR DOOR
+      </div>
+      <h2>
+       The delivery journey.
+      </h2>
+      <p>
+       A simple overview of what happens after you place an order.
+      </p>
+     </div>
+     <div class="steps">
+      <article class="step">
+       <span class="step-number">
+        STEP 01
+       </span>
+       <i class="bi bi-bag-check">
+       </i>
+       <h3>
+        Place Your Order
+       </h3>
+       <p>
+        Choose your timepiece and provide accurate contact and delivery details at checkout.
+       </p>
+      </article>
+      <article class="step">
+       <span class="step-number">
+        STEP 02
+       </span>
+       <i class="bi bi-clipboard-check">
+       </i>
+       <h3>
+        Confirmation
+       </h3>
+       <p>
+        Your order details are reviewed. Keep your order number available for support enquiries.
+       </p>
+      </article>
+      <article class="step">
+       <span class="step-number">
+        STEP 03
+       </span>
+       <i class="bi bi-box-seam">
+       </i>
+       <h3>
+        Preparation
+       </h3>
+       <p>
+        Your timepiece is prepared for dispatch, subject to order confirmation and availability.
+       </p>
+      </article>
+      <article class="step">
+       <span class="step-number">
+        STEP 04
+       </span>
+       <i class="bi bi-truck">
+       </i>
+       <h3>
+        Delivery
+       </h3>
+       <p>
+        Once dispatched, the parcel travels to your provided address through the applicable delivery service.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <section class="section alt" id="details">
+    <div class="section-inner">
+     <div class="section-heading">
+      <div class="eyebrow">
+       IMPORTANT INFORMATION
+      </div>
+      <h2>
+       Before your order arrives.
+      </h2>
+      <p>
+       Helpful things to know about delivery arrangements.
+      </p>
+     </div>
+     <div class="info-grid">
+      <article class="info-card">
+       <i class="bi bi-geo-alt">
+       </i>
+       <h3>
+        Delivery Areas
+       </h3>
+       <p>
+        Available destinations depend on courier coverage and your delivery address. Please contact support to confirm whether delivery is available in your area before ordering.
+       </p>
+      </article>
+      <article class="info-card">
+       <i class="bi bi-calendar2-week">
+       </i>
+       <h3>
+        Estimated Delivery Time
+       </h3>
+       <p>
+        Delivery estimates can vary by destination, stock availability, order processing and courier conditions. Confirm the current estimate when placing your order.
+       </p>
+      </article>
+      <article class="info-card">
+       <i class="bi bi-wallet2">
+       </i>
+       <h3>
+        Shipping Charges
+       </h3>
+       <p>
+        Any applicable delivery fee should be communicated during checkout or order confirmation. Do not assume free delivery unless it is explicitly offered.
+       </p>
+      </article>
+      <article class="info-card">
+       <i class="bi bi-pencil-square">
+       </i>
+       <h3>
+        Address Accuracy
+       </h3>
+       <p>
+        Provide your complete address, city and reachable phone number. If you notice a mistake, contact support promptly and include your order reference.
+       </p>
+      </article>
+     </div>
+     <div class="note">
+      <strong>
+       Please note:
+      </strong>
+      Shipping fees, coverage, courier partners and delivery timelines are not fixed on this informational page. Confirm the details for your particular order with ALBERTO CLOCK before purchase.
+     </div>
+    </div>
+   </section>
+   <section class="section" id="faqs">
+    <div class="section-inner faq-layout">
+     <div class="faq-intro">
+      <div class="eyebrow">
+       SHIPPING FAQS
+      </div>
+      <h2>
+       Good to know, before it goes.
+      </h2>
+      <p>
+       Answers to common shipping questions. For details specific to your order, reach out to our support team.
+      </p>
+     </div>
+     <div class="faq-list">
+      <div class="faq-item open">
+       <button aria-expanded="true" class="faq-question" type="button">
+        How can I check my order status?
+        <i class="bi bi-plus-lg">
+        </i>
+       </button>
+       <div class="faq-answer">
+        Contact support with your order number and the contact information used at checkout. An automatic tracking portal is not provided on this page.
+       </div>
+      </div>
+      <div class="faq-item">
+       <button aria-expanded="false" class="faq-question" type="button">
+        How much does shipping cost?
+        <i class="bi bi-plus-lg">
+        </i>
+       </button>
+       <div class="faq-answer">
+        Charges may vary depending on the destination and current delivery arrangements. Confirm the applicable amount during checkout or order confirmation.
+       </div>
+      </div>
+      <div class="faq-item">
+       <button aria-expanded="false" class="faq-question" type="button">
+        Can I change my delivery address?
+        <i class="bi bi-plus-lg">
+        </i>
+       </button>
+       <div class="faq-answer">
+        Please contact support as soon as possible with your order reference and corrected address. Changes may not be possible once a parcel has been dispatched.
+       </div>
+      </div>
+      <div class="faq-item">
+       <button aria-expanded="false" class="faq-question" type="button">
+        What if my delivery is delayed?
+        <i class="bi bi-plus-lg">
+        </i>
+       </button>
+       <div class="faq-answer">
+        Delivery may be affected by courier schedules, location, weather or other operational factors. Contact support with your order number for assistance.
+       </div>
+      </div>
+      <div class="faq-item">
+       <button aria-expanded="false" class="faq-question" type="button">
+        What should I do if my parcel arrives damaged?
+        <i class="bi bi-plus-lg">
+        </i>
+       </button>
+       <div class="faq-answer">
+        Document the packaging and item condition, keep the packaging, and contact support promptly with your order number and photographs so your concern can be reviewed.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section alt" id="shipping-support">
+    <div class="section-inner">
+     <div class="cta">
+      <div class="eyebrow">
+       PERSONAL ASSISTANCE
+      </div>
+      <h2>
+       Need help with a delivery?
+      </h2>
+      <p>
+       Whether you're asking about shipping availability, an address change or an existing order, our support page is the right place to start.
+      </p>
+      <a aria-label="Contact Alberto Clock shipping support on WhatsApp (opens in a new tab)" class="cta-btn" href="https://wa.me/923102226984?text=Hello%20ALBERTO%20CLOCK%2C%20I%20need%20help%20with%20shipping%20or%20delivery.%20My%20order%20number%20%28if%20applicable%29%20is%3A%20" rel="noopener noreferrer" target="_blank">
+       CONTACT ON WHATSAPP
+       <i aria-hidden="true" class="bi bi-whatsapp">
+       </i>
+      </a>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer class="footer">
+   <div class="footer-inner">
+    <div>
+     <a class="brand" href="index.html">
+      <strong>
+       ALBERTO
+      </strong>
+      <small>
+       &mdash; CLOCK &mdash;
+      </small>
+     </a>
+     <p>
+      More than just time. Discover thoughtful design, timeless style, and personal support for every moment.
+     </p>
+    </div>
+    <div class="footer-links">
+     <a href="index.html">
+      Home
+     </a>
+     <a href="shop.html">
+      Shop
+     </a>
+     <a href="about.html">
+      About Us
+     </a>
+     <a href="contact.html">
+      Contact
+     </a>
+     <a href="helpsupport.html">
+      Help &amp; Support
+     </a>
+    </div>
+   </div>
+   <div class="footer-bottom">
+    <span>
+     &copy;
+     <span id="year">
+     </span>
+     ALBERTO CLOCK. All rights reserved.
+    </span>
+    <span>
+     TIMELESS STYLE &middot; PERSONAL SERVICE
+    </span>
+   </div>
+  </footer>
+  <script>
+   const root = document.documentElement;
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
+
+        function setTheme(theme) {
+            root.dataset.theme = theme;
+            themeIcon.className = theme === "dark" ? "bi bi-sun-fill" : "bi bi-moon-stars";
+            try {
+                localStorage.setItem("albertoTheme", theme);
+            } catch (error) {
+                // Theme remains usable when localStorage is unavailable.
+            }
+        }
+
+        setTheme(root.dataset.theme === "dark" ? "dark" : "light");
+        themeToggle.addEventListener("click", () => {
+            setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+        });
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("show");
+            menuToggle.innerHTML = isOpen
+                ? '<i class="bi bi-x-lg"></i>'
+                : '<i class="bi bi-list"></i>';
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+
+        navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("show");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+                menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+            });
+        });
+
+        document.querySelectorAll(".faq-question").forEach((button) => {
+            button.addEventListener("click", () => {
+                const item = button.closest(".faq-item");
+                const isOpen = item.classList.toggle("open");
+                button.setAttribute("aria-expanded", String(isOpen));
+            });
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+ </body>
+</html>
+

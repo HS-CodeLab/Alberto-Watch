@@ -1,0 +1,2230 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Alberto Clock</title>
+
+<script>
+try {
+ const theme = localStorage.getItem("albertoTheme");
+ document.documentElement.dataset.theme =
+ theme === "dark" ? "dark" : "light";
+} catch(e) {}
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================
+   ALBERTO CLOCK — SHARED THEME
+========================================= */
+
+:root,
+[data-theme="light"] {
+ color-scheme:light;
+ --body:#F3EEE7;
+ --surface:#FFFFFF;
+ --surface-alt:#F8F5F0;
+ --header:#F7F4EF;
+ --heading:#09243B;
+ --text:#263441;
+ --muted:#78818A;
+ --gold:#B59665;
+ --border:#E6E0D7;
+ --button:#09243B;
+ --button-text:#FFFFFF;
+ --newsletter:#EAE3D8;
+ --footer:#061827;
+ --shadow:0 20px 55px rgba(9,36,59,.09);
+}
+
+[data-theme="dark"] {
+ color-scheme:dark;
+ --body:#09131D;
+ --surface:#142534;
+ --surface-alt:#101F2D;
+ --header:#0D1C2A;
+ --heading:#F4E9D8;
+ --text:#E8E4DE;
+ --muted:#AAB5BE;
+ --gold:#D5B783;
+ --border:#304352;
+ --button:#D5B783;
+ --button-text:#081827;
+ --newsletter:#142534;
+ --footer:#060F18;
+ --shadow:0 20px 55px rgba(0,0,0,.3);
+}
+
+/* GLOBAL */
+
+* {
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+}
+
+html {
+ scroll-behavior:smooth;
+ scroll-padding-top:155px;
+}
+
+body {
+ background:var(--body);
+ color:var(--text);
+ font-family:'DM Sans',sans-serif;
+ overflow-x:hidden;
+ padding-top:var(--fixed-header-height,136px);
+ transition:background .3s,color .3s;
+}
+
+a {
+ text-decoration:none;
+ color:inherit;
+}
+
+button {
+ cursor:pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+ outline:2px solid var(--gold);
+ outline-offset:3px;
+}
+
+.container {
+ max-width:1320px;
+}
+
+.eyebrow {
+ color:var(--gold);
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:3px;
+ text-transform:uppercase;
+}
+
+.section-title {
+ font-family:'Playfair Display',serif;
+ color:var(--heading);
+ font-size:clamp(36px,4.5vw,60px);
+ line-height:1.15;
+ margin:17px 0 23px;
+}
+
+.section-title em {
+ color:var(--gold);
+ font-weight:400;
+}
+
+.section-description {
+ font-size:14px;
+ line-height:2;
+ color:var(--muted);
+}
+
+.btn-luxury {
+ border-radius:30px;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:20px;
+ background:var(--button);
+ color:var(--button-text);
+ border:1px solid var(--button);
+ padding:16px 25px;
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:1px;
+ transition:.3s;
+}
+
+.btn-luxury:hover {
+ background:var(--gold);
+ border-color:var(--gold);
+ color:#081827;
+ transform:translateY(-3px);
+}
+
+/* =========================================
+   HEADER — SHARED STYLING
+========================================= */
+
+.topbar {
+ background:#09243B;
+ color:white;
+ text-align:center;
+ padding:11px;
+ font-size:10px;
+ letter-spacing:2.5px;
+}
+
+.topbar span {
+ color:#D5B783;
+}
+
+.fixed-header-shell {
+ position:fixed;
+ top:0;
+ left:0;
+ right:0;
+ width:100%;
+ z-index:1050;
+ box-shadow:0 8px 28px rgba(0,0,0,.12);
+}
+
+.site-header {
+ background:var(--header);
+ border-bottom:1px solid var(--border);
+ position:relative;
+ z-index:1;
+ transition:.3s;
+}
+
+.main-navbar {
+ min-height:100px;
+}
+
+.navbar-brand {
+ display:inline-flex;
+ align-items:center;
+ padding:0;
+ margin:0;
+}
+
+.brand-name,
+.footer-brand {
+ display:inline-flex;
+ flex-direction:column;
+ align-items:center;
+ width:max-content;
+}
+
+.brand-name strong {
+ font-family:'Playfair Display',serif;
+ color:var(--heading);
+ font-size:31px;
+ letter-spacing:5px;
+ line-height:1.2;
+}
+
+.brand-name small {
+ color:var(--gold);
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:8px;
+ margin-top:5px;
+}
+
+.navbar-nav {
+ gap:30px;
+}
+
+.navbar-nav .nav-link {
+ color:var(--text);
+ font-size:13px;
+ font-weight:600;
+ padding:15px 0!important;
+ position:relative;
+}
+
+.navbar-nav .nav-link::after {
+ content:"";
+ position:absolute;
+ left:0;
+ bottom:5px;
+ width:0;
+ height:2px;
+ background:var(--gold);
+ transition:width .3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+ color:var(--heading);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+ width:100%;
+}
+
+.header-actions {
+ display:flex;
+ align-items:center;
+ gap:20px;
+}
+
+.header-actions a,
+.header-actions button {
+ background:none;
+ border:0;
+ color:var(--heading);
+ font-size:21px;
+ padding:0;
+ position:relative;
+}
+
+.theme-toggle {
+ width:40px;
+ height:40px;
+ border:1px solid var(--border)!important;
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ background:var(--surface)!important;
+}
+
+.theme-toggle .bi-sun-fill {
+ display:none;
+}
+
+[data-theme="dark"] .theme-toggle .bi-moon-stars {
+ display:none;
+}
+
+[data-theme="dark"] .theme-toggle .bi-sun-fill {
+ display:inline;
+}
+
+.cart-count {
+ position:absolute;
+ top:-8px;
+ right:-10px;
+ width:19px;
+ height:19px;
+ display:grid;
+ place-items:center;
+ background:var(--button);
+ color:var(--button-text);
+ border-radius:50%;
+ font-size:10px;
+}
+
+/* =========================================
+   01 — CONTACT INTRODUCTION
+========================================= */
+
+.contact-intro {
+ background:var(--surface-alt);
+ padding:105px 0 95px;
+ position:relative;
+ overflow:hidden;
+}
+
+.contact-intro::before {
+ content:"";
+ position:absolute;
+ width:550px;
+ height:550px;
+ border:1px solid var(--gold);
+ opacity:.13;
+ border-radius:50%;
+ right:-220px;
+ top:-280px;
+ pointer-events:none;
+}
+
+.contact-intro .container {
+ position:relative;
+ z-index:1;
+}
+
+.contact-intro h1 {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(55px,7vw,95px);
+ color:var(--heading);
+ line-height:1.1;
+ margin:22px 0 27px;
+ letter-spacing:-2px;
+}
+
+.contact-intro h1 em {
+ color:var(--gold);
+ font-weight:400;
+}
+
+.contact-intro p {
+ max-width:570px;
+ font-size:14px;
+ color:var(--muted);
+ line-height:2;
+ margin:0;
+}
+
+.intro-bottom {
+ display:flex;
+ align-items:center;
+ gap:20px;
+ margin-top:40px;
+ color:var(--heading);
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:2px;
+}
+
+.intro-bottom::before {
+ content:"";
+ width:65px;
+ height:1px;
+ background:var(--gold);
+}
+
+/* =========================================
+   02 — CONTACT CARDS
+========================================= */
+
+.contact-methods {
+ padding:85px 0 100px;
+ background:var(--surface);
+}
+
+.method-card {
+ height:100%;
+ padding:37px 30px;
+ border:1px solid var(--border);
+ background:var(--surface-alt);
+ border-radius:16px;
+ transition:.35s;
+}
+
+.method-card:hover {
+ transform:translateY(-8px);
+ border-color:var(--gold);
+ box-shadow:var(--shadow);
+}
+
+.method-icon {
+ width:64px;
+ height:64px;
+ border:1px solid var(--gold);
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ color:var(--gold);
+ font-size:26px;
+ margin-bottom:28px;
+}
+
+.method-card h3 {
+ font-family:'Playfair Display',serif;
+ font-size:27px;
+ color:var(--heading);
+ margin-bottom:14px;
+}
+
+.method-card p {
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.9;
+ min-height:47px;
+}
+
+.method-link {
+ display:inline-flex;
+ align-items:center;
+ gap:12px;
+ color:var(--heading);
+ font-size:12px;
+ font-weight:700;
+ border-bottom:1px solid var(--gold);
+ padding-bottom:9px;
+ transition:.3s;
+}
+
+.method-link:hover {
+ color:var(--gold);
+ gap:18px;
+}
+
+/* =========================================
+   03 — CONTACT FORM
+========================================= */
+
+.contact-main {
+ padding:105px 0;
+ background:var(--surface-alt);
+}
+
+.contact-form-panel {
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:48px;
+ box-shadow:var(--shadow);
+}
+
+.form-heading {
+ margin-bottom:35px;
+}
+
+.form-heading h2 {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(32px,3vw,45px);
+ color:var(--heading);
+ margin:13px 0;
+}
+
+.form-heading p {
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.8;
+}
+
+.form-label {
+ font-size:11px;
+ font-weight:700;
+ letter-spacing:1px;
+ color:var(--heading);
+ margin-bottom:10px;
+}
+
+.contact-input {
+ width:100%;
+ min-height:54px;
+ background:var(--surface-alt);
+ border:1px solid var(--border);
+ border-radius:9px;
+ padding:15px 17px;
+ color:var(--text);
+ font-family:'DM Sans',sans-serif;
+ font-size:13px;
+ outline:none;
+ transition:.3s;
+}
+
+.contact-input:focus {
+ border-color:var(--gold);
+ box-shadow:0 0 0 3px rgba(181,150,101,.1);
+}
+
+.contact-input::placeholder {
+ color:var(--muted);
+ opacity:.8;
+}
+
+textarea.contact-input {
+ min-height:155px;
+ resize:vertical;
+}
+
+select.contact-input {
+ cursor:pointer;
+}
+
+.submit-btn {
+ width:100%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:14px;
+ min-height:55px;
+ background:var(--button);
+ color:var(--button-text);
+ border:1px solid var(--button);
+ border-radius:30px;
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:1px;
+ transition:.3s;
+}
+
+.submit-btn:hover {
+ background:var(--gold);
+ border-color:var(--gold);
+ color:#081827;
+}
+
+.form-note {
+ font-size:11px;
+ color:var(--muted);
+ margin:17px 0 0;
+ text-align:center;
+ line-height:1.7;
+}
+
+/* CONTACT SIDE */
+
+.contact-side {
+ padding:20px 0 20px 35px;
+}
+
+.contact-side h2 {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(35px,4vw,53px);
+ color:var(--heading);
+ line-height:1.2;
+ margin:17px 0 24px;
+}
+
+.contact-side h2 em {
+ color:var(--gold);
+ font-weight:400;
+}
+
+.contact-side > p {
+ color:var(--muted);
+ font-size:14px;
+ line-height:2;
+ margin-bottom:35px;
+}
+
+.support-item {
+ display:flex;
+ gap:20px;
+ align-items:flex-start;
+ padding:24px 0;
+ border-top:1px solid var(--border);
+}
+
+.support-item i {
+ color:var(--gold);
+ font-size:24px;
+}
+
+.support-item h4 {
+ font-family:'Playfair Display',serif;
+ font-size:20px;
+ color:var(--heading);
+ margin-bottom:8px;
+}
+
+.support-item p {
+ color:var(--muted);
+ font-size:12px;
+ line-height:1.8;
+ margin:0;
+}
+
+.support-image {
+ margin-top:30px;
+ height:270px;
+ overflow:hidden;
+ border-radius:15px;
+ position:relative;
+}
+
+.support-image img {
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:transform .6s;
+}
+
+.support-image:hover img {
+ transform:scale(1.07);
+}
+
+/* =========================================
+   04 — WHATSAPP SECTION
+========================================= */
+
+.whatsapp-section {
+ background:#09243B;
+ padding:95px 0;
+ color:white;
+ overflow:hidden;
+ position:relative;
+}
+
+.whatsapp-section::before {
+ content:"";
+ position:absolute;
+ width:420px;
+ height:420px;
+ border:1px solid rgba(213,183,131,.2);
+ border-radius:50%;
+ right:-120px;
+ top:-200px;
+}
+
+.whatsapp-content {
+ position:relative;
+ z-index:1;
+}
+
+.whatsapp-section h2 {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(37px,4.5vw,58px);
+ margin:18px 0 23px;
+}
+
+.whatsapp-section h2 em {
+ color:#D5B783;
+ font-weight:400;
+}
+
+.whatsapp-section p {
+ color:#B5C2CB;
+ font-size:13px;
+ line-height:2;
+ max-width:540px;
+ margin:0;
+}
+
+.whatsapp-action {
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:15px;
+ background:#25D366;
+ color:#062A16;
+ padding:19px 30px;
+ border-radius:40px;
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:.5px;
+ transition:.3s;
+}
+
+.whatsapp-action i {
+ font-size:22px;
+}
+
+.whatsapp-action:hover {
+ background:#1DB954;
+ color:#062A16;
+ transform:translateY(-4px);
+}
+
+/* =========================================
+   05 — FAQ
+========================================= */
+
+.faq-section {
+ background:var(--surface);
+ padding:105px 0;
+}
+
+.faq-heading {
+ text-align:center;
+ max-width:650px;
+ margin:0 auto 50px;
+}
+
+.faq-wrap {
+ max-width:900px;
+ margin:auto;
+}
+
+.faq-item {
+ background:var(--surface-alt);
+ border:1px solid var(--border);
+ border-radius:12px!important;
+ margin-bottom:14px;
+ overflow:hidden;
+}
+
+.faq-button {
+ background:var(--surface-alt);
+ color:var(--heading);
+ padding:24px 26px;
+ font-size:14px;
+ font-weight:700;
+ box-shadow:none!important;
+}
+
+.faq-button:not(.collapsed) {
+ background:var(--surface-alt);
+ color:var(--gold);
+}
+
+.faq-button::after {
+ filter:grayscale(1);
+}
+
+[data-theme="dark"] .faq-button::after {
+ filter:invert(1);
+}
+
+.faq-answer {
+ background:var(--surface-alt);
+ color:var(--muted);
+ padding:0 26px 25px;
+ font-size:13px;
+ line-height:2;
+}
+
+/* =========================================
+   06 — FINAL CTA
+========================================= */
+
+.contact-cta {
+ padding:90px 15px;
+ text-align:center;
+ background:var(--surface-alt);
+}
+
+.contact-cta h2 {
+ font-family:'Playfair Display',serif;
+ font-size:clamp(37px,4vw,55px);
+ color:var(--heading);
+ margin:18px 0 22px;
+}
+
+.contact-cta h2 em {
+ color:var(--gold);
+ font-weight:400;
+}
+
+.contact-cta p {
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.9;
+ max-width:570px;
+ margin:0 auto 28px;
+}
+
+/* =========================================
+   NEWSLETTER
+========================================= */
+
+.newsletter {
+ background:var(--newsletter);
+ padding:75px 0;
+}
+
+.newsletter h2 {
+ font-family:'Playfair Display',serif;
+ color:var(--heading);
+ font-size:42px;
+}
+
+.newsletter p {
+ color:var(--muted);
+ font-size:13px;
+}
+
+.newsletter-form {
+ display:flex;
+ background:var(--surface);
+ padding:6px;
+ border:1px solid var(--border);
+}
+
+.newsletter-form input {
+ flex:1;
+ min-width:0;
+ padding:15px;
+ border:0;
+ outline:0;
+ background:transparent;
+ color:var(--text);
+ font-size:12px;
+}
+
+.newsletter-form button {
+ border:0;
+ background:var(--button);
+ color:var(--button-text);
+ padding:14px 25px;
+ font-size:11px;
+ font-weight:700;
+}
+
+/* =========================================
+   FOOTER — SHARED STYLING
+========================================= */
+
+.footer {
+ background:var(--footer);
+ color:white;
+ padding:80px 0 25px;
+}
+
+.footer-brand {
+ margin-bottom:24px;
+}
+
+.footer-brand strong {
+ font-family:'Playfair Display',serif;
+ font-size:30px;
+ letter-spacing:5px;
+ line-height:1.2;
+ color:white;
+}
+
+.footer-brand small {
+ color:#D5B783;
+ font-size:11px;
+ letter-spacing:8px;
+ margin-top:7px;
+}
+
+.footer-description {
+ color:#A7B0B8;
+ font-size:12px;
+ line-height:2;
+ max-width:330px;
+}
+
+.footer h5 {
+ font-size:12px;
+ letter-spacing:2px;
+ color:#E6D1A6;
+ margin-bottom:25px;
+}
+
+.footer ul {
+ list-style:none;
+ padding:0;
+}
+
+.footer li {
+ margin-bottom:14px;
+}
+
+.footer li a {
+ color:#A7B0B8;
+ font-size:12px;
+}
+
+.footer li a:hover {
+ color:#D5B783;
+}
+
+.socials {
+ display:flex;
+ gap:10px;
+ margin-top:25px;
+}
+
+.socials a {
+ width:37px;
+ height:37px;
+ display:grid;
+ place-items:center;
+ border:1px solid #40505E;
+ transition:.3s;
+}
+
+.socials a:hover {
+ background:#D5B783;
+ color:#061827;
+}
+
+.footer-bottom {
+ border-top:1px solid #263847;
+ margin-top:60px;
+ padding-top:25px;
+ display:flex;
+ justify-content:space-between;
+ color:#87949F;
+ font-size:11px;
+}
+
+/* FLOATING WHATSAPP */
+
+.floating-whatsapp {
+ position:fixed;
+ right:25px;
+ bottom:25px;
+ width:56px;
+ height:56px;
+ background:#25D366;
+ color:white;
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ font-size:28px;
+ z-index:999;
+ box-shadow:0 8px 25px rgba(37,211,102,.3);
+ transition:.3s;
+}
+
+.floating-whatsapp:hover {
+ transform:translateY(-5px);
+ background:#1DB954;
+ color:white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px) {
+
+ .navbar-collapse {
+  padding:20px 0;
+ }
+
+ .navbar-nav {
+  gap:5px;
+ }
+
+ .header-actions {
+  margin-top:20px;
+ }
+
+ .contact-side {
+  padding:30px 0 0;
+ }
+
+ .whatsapp-section {
+  text-align:center;
+ }
+
+ .whatsapp-section p {
+  margin:0 auto;
+ }
+
+}
+
+@media(max-width:767px) {
+
+ .main-navbar {
+  min-height:80px;
+ }
+
+ .topbar {
+  font-size:8px;
+  letter-spacing:1px;
+  padding:9px 5px;
+ }
+
+ .brand-name strong {
+  font-size:22px;
+  letter-spacing:3px;
+ }
+
+ .brand-name small {
+  font-size:9px;
+  letter-spacing:5px;
+ }
+
+ .contact-intro {
+  padding:65px 0;
+ }
+
+ .contact-intro h1 {
+  font-size:55px;
+ }
+
+ .contact-methods,
+ .contact-main,
+ .faq-section {
+  padding:65px 0;
+ }
+
+ .contact-form-panel {
+  padding:30px 20px;
+ }
+
+ .contact-side h2 {
+  font-size:37px;
+ }
+
+ .whatsapp-section {
+  padding:70px 0;
+ }
+
+ .faq-button {
+  padding:20px 16px;
+  font-size:12px;
+ }
+
+ .faq-answer {
+  padding:0 16px 20px;
+ }
+
+ .footer-bottom {
+  flex-direction:column;
+  gap:10px;
+  text-align:center;
+ }
+
+ .floating-whatsapp {
+  right:15px;
+  bottom:15px;
+  width:49px;
+  height:49px;
+  font-size:24px;
+ }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+ *,*::before,*::after {
+  scroll-behavior:auto!important;
+  animation:none!important;
+  transition:none!important;
+ }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ======================================
+     SHARED HEADER
+====================================== -->
+
+<div class="fixed-header-shell" id="fixedHeaderShell">
+
+<div class="topbar">
+ MORE THAN JUST TIME
+ <span class="mx-2">✦</span>
+ DISCOVER THE ART OF WATCHMAKING
+</div>
+
+<header class="site-header">
+
+<nav class="navbar navbar-expand-lg main-navbar">
+
+<div class="container">
+
+<a class="navbar-brand" href="index.html">
+<div class="brand-name">
+<strong>ALBERTO</strong>
+<small>— CLOCK —</small>
+</div>
+</a>
+
+<button
+class="navbar-toggler border-0"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#mainMenu"
+aria-label="Toggle navigation">
+<i class="bi bi-list fs-2" style="color:var(--heading)"></i>
+</button>
+
+<div class="collapse navbar-collapse" id="mainMenu">
+
+<ul class="navbar-nav mx-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="shop.html">Shop</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="collection.html">Collections</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="about.html">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link active" href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+<div class="header-actions">
+
+<button aria-label="Search" id="searchBtn" type="button">
+<i class="bi bi-search"></i>
+</button>
+
+<button
+aria-label="Switch theme"
+class="theme-toggle"
+id="themeToggle"
+type="button">
+<i class="bi bi-moon-stars"></i>
+<i class="bi bi-sun-fill"></i>
+</button>
+
+<a aria-label="Account" href="login.html">
+<i class="bi bi-person"></i>
+</a>
+
+<a aria-label="Cart" href="cart.html">
+<i class="bi bi-bag"></i>
+<span class="cart-count" id="cartCount">0</span>
+</a>
+
+</div>
+</div>
+</div>
+</nav>
+</header>
+</div>
+
+<main>
+
+<!-- ======================================
+     SECTION 01 — CONTACT INTRO
+====================================== -->
+
+<section class="contact-intro">
+
+<div class="container">
+
+<div class="eyebrow">
+ALBERTO CLOCK / CONTACT US
+</div>
+
+<h1>
+Let's Start a <em>Conversation.</em>
+</h1>
+
+<p>
+Whether you have a question about our collections,
+need assistance choosing your next watch or simply
+want to get in touch, we're here to help make
+your Alberto Clock experience effortless.
+</p>
+
+<div class="intro-bottom">
+WE'D LOVE TO HEAR FROM YOU
+</div>
+
+</div>
+</section>
+
+<!-- ======================================
+     SECTION 02 — CONTACT CARDS
+====================================== -->
+
+<section class="contact-methods">
+
+<div class="container">
+
+<div class="row g-4">
+
+<!-- WHATSAPP -->
+
+<div class="col-lg-4 col-md-6">
+
+<article class="method-card">
+
+<div class="method-icon">
+<i class="bi bi-whatsapp"></i>
+</div>
+
+<h3>WhatsApp Us</h3>
+
+<p>
+Connect with us directly for product
+enquiries and order assistance.
+</p>
+
+<a
+href="https://wa.me/923102226984"
+target="_blank"
+rel="noopener noreferrer"
+class="method-link">
+
+0310 2226984
+<i class="bi bi-arrow-up-right"></i>
+
+</a>
+
+</article>
+</div>
+
+<!-- CONTACT FORM -->
+
+<div class="col-lg-4 col-md-6">
+
+<article class="method-card">
+
+<div class="method-icon">
+<i class="bi bi-chat-dots"></i>
+</div>
+
+<h3>Send an Enquiry</h3>
+
+<p>
+Have something specific in mind?
+Send your message using our contact form.
+</p>
+
+<a href="#contactForm" class="method-link">
+
+WRITE A MESSAGE
+<i class="bi bi-arrow-up-right"></i>
+
+</a>
+
+</article>
+</div>
+
+<!-- COLLECTIONS -->
+
+<div class="col-lg-4 col-md-6">
+
+<article class="method-card">
+
+<div class="method-icon">
+<i class="bi bi-watch"></i>
+</div>
+
+<h3>Explore Our Watches</h3>
+
+<p>
+Discover our collections and find
+the perfect style for every occasion.
+</p>
+
+<a href="collection.html" class="method-link">
+
+VIEW COLLECTIONS
+<i class="bi bi-arrow-up-right"></i>
+
+</a>
+
+</article>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======================================
+     SECTION 03 — CONTACT FORM
+====================================== -->
+
+<section class="contact-main" id="contactForm">
+
+<div class="container">
+
+<div class="row g-5 align-items-start">
+
+<!-- FORM -->
+
+<div class="col-lg-7">
+
+<div class="contact-form-panel">
+
+<div class="form-heading">
+
+<span class="eyebrow">
+SEND US A MESSAGE
+</span>
+
+<h2>How Can We Help?</h2>
+
+<p>
+Fill in the details below and continue
+your enquiry directly through WhatsApp.
+</p>
+
+</div>
+
+<form id="albertoContactForm">
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<label class="form-label" for="customerName">
+FULL NAME *
+</label>
+
+<input
+class="contact-input"
+type="text"
+id="customerName"
+name="name"
+placeholder="Your full name"
+autocomplete="name"
+maxlength="100"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label" for="customerEmail">
+EMAIL ADDRESS *
+</label>
+
+<input
+class="contact-input"
+type="email"
+id="customerEmail"
+name="email"
+placeholder="Your email address"
+autocomplete="email"
+maxlength="254"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label" for="customerPhone">
+PHONE NUMBER *
+</label>
+
+<input
+class="contact-input"
+type="tel"
+id="customerPhone"
+name="phone"
+placeholder="03XX XXXXXXX"
+autocomplete="tel"
+maxlength="20"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label" for="customerSubject">
+ENQUIRY TYPE *
+</label>
+
+<select
+class="contact-input"
+id="customerSubject"
+name="subject"
+required>
+
+<option value="" disabled selected>
+Select an enquiry
+</option>
+
+<option value="Product Enquiry">
+Product Enquiry
+</option>
+
+<option value="Order Assistance">
+Order Assistance
+</option>
+
+<option value="Watch Availability">
+Watch Availability
+</option>
+
+<option value="Shipping Information">
+Shipping Information
+</option>
+
+<option value="Returns and Exchanges">
+Returns & Exchanges
+</option>
+
+<option value="General Question">
+General Question
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+</div>
+
+<div class="col-12">
+
+<label class="form-label" for="customerMessage">
+YOUR MESSAGE *
+</label>
+
+<textarea
+class="contact-input"
+id="customerMessage"
+name="message"
+placeholder="Tell us how we can help you..."
+maxlength="3000"
+required></textarea>
+
+</div>
+
+<div class="col-12">
+
+<button class="submit-btn" type="submit">
+
+<i class="bi bi-whatsapp fs-5"></i>
+
+SEND VIA WHATSAPP
+
+<i class="bi bi-arrow-up-right"></i>
+
+</button>
+
+<p class="form-note">
+Your message will open in WhatsApp for your review.
+You will need to press Send there to complete your enquiry.
+</p>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="col-lg-5">
+
+<div class="contact-side">
+
+<span class="eyebrow">
+PERSONAL ASSISTANCE
+</span>
+
+<h2>
+We're Here for
+<em>Every Moment.</em>
+</h2>
+
+<p>
+Every question matters. Whether you're
+exploring our collections or need help
+with a product, reach out and start
+a conversation with Alberto Clock.
+</p>
+
+<div class="support-item">
+
+<i class="bi bi-chat-heart"></i>
+
+<div>
+
+<h4>Personal Assistance</h4>
+
+<p>
+Contact our team for product-related
+questions and shopping enquiries.
+</p>
+
+</div>
+</div>
+
+<div class="support-item">
+
+<i class="bi bi-bag-check"></i>
+
+<div>
+
+<h4>Order Support</h4>
+
+<p>
+Need information about an order?
+Reach out through WhatsApp.
+</p>
+
+</div>
+</div>
+
+<div class="support-item">
+
+<i class="bi bi-shield-check"></i>
+
+<div>
+
+<h4>Shop With Confidence</h4>
+
+<p>
+Ask questions and review product details
+before making your purchase.
+</p>
+
+</div>
+</div>
+
+<div class="support-image">
+
+<img
+loading="lazy"
+src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85"
+alt="Elegant Alberto Clock wristwatch">
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======================================
+     SECTION 04 — WHATSAPP CTA
+====================================== -->
+
+<section class="whatsapp-section">
+
+<div class="container">
+
+<div class="row align-items-center g-4 whatsapp-content">
+
+<div class="col-lg-8">
+
+<span class="eyebrow">
+DIRECT COMMUNICATION
+</span>
+
+<h2>
+Prefer a <em>Quick Chat?</em>
+</h2>
+
+<p>
+Connect with Alberto Clock directly through
+WhatsApp. Ask about your favourite watch,
+product details or ordering information.
+</p>
+
+</div>
+
+<div class="col-lg-4 text-lg-end">
+
+<a
+class="whatsapp-action"
+href="https://wa.me/923102226984?text=Hello%20Alberto%20Clock%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="bi bi-whatsapp"></i>
+
+CHAT ON WHATSAPP
+
+<i class="bi bi-arrow-up-right"></i>
+
+</a>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======================================
+     SECTION 05 — FAQ
+====================================== -->
+
+<section class="faq-section" id="faq">
+
+<div class="container">
+
+<div class="faq-heading">
+
+<span class="eyebrow">
+FREQUENTLY ASKED QUESTIONS
+</span>
+
+<h2 class="section-title">
+Questions? <em>Answered.</em>
+</h2>
+
+<p class="section-description">
+Find helpful information about our collections
+and how to get in touch.
+</p>
+
+</div>
+
+<div class="accordion faq-wrap" id="faqAccordion">
+
+<!-- FAQ 01 -->
+
+<div class="accordion-item faq-item">
+
+<h3 class="accordion-header">
+
+<button
+class="accordion-button faq-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faqOne"
+aria-expanded="true"
+aria-controls="faqOne">
+
+How can I order a watch?
+
+</button>
+
+</h3>
+
+<div
+id="faqOne"
+class="accordion-collapse collapse show"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body faq-answer">
+
+Browse our Shop or Collections page,
+select your preferred watch and use
+the WhatsApp ordering option available
+in its product details.
+
+</div>
+</div>
+</div>
+
+<!-- FAQ 02 -->
+
+<div class="accordion-item faq-item">
+
+<h3 class="accordion-header">
+
+<button
+class="accordion-button collapsed faq-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faqTwo"
+aria-expanded="false"
+aria-controls="faqTwo">
+
+Can I ask about watch availability?
+
+</button>
+
+</h3>
+
+<div
+id="faqTwo"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body faq-answer">
+
+Yes. Contact us through WhatsApp
+with the name or image of the watch
+you're interested in to enquire
+about its availability.
+
+</div>
+</div>
+</div>
+
+<!-- FAQ 03 -->
+
+<div class="accordion-item faq-item">
+
+<h3 class="accordion-header">
+
+<button
+class="accordion-button collapsed faq-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faqThree"
+aria-expanded="false"
+aria-controls="faqThree">
+
+How do I get shipping information?
+
+</button>
+
+</h3>
+
+<div
+id="faqThree"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body faq-answer">
+
+You can contact our team through
+WhatsApp to ask about available
+shipping options, delivery charges
+and estimated delivery times
+for your location.
+
+</div>
+</div>
+</div>
+
+<!-- FAQ 04 -->
+
+<div class="accordion-item faq-item">
+
+<h3 class="accordion-header">
+
+<button
+class="accordion-button collapsed faq-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faqFour"
+aria-expanded="false"
+aria-controls="faqFour">
+
+Can I get help choosing a watch?
+
+</button>
+
+</h3>
+
+<div
+id="faqFour"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body faq-answer">
+
+Absolutely. Share your preferred
+style, budget and occasion with
+our team through WhatsApp so
+we can discuss suitable options.
+
+</div>
+</div>
+</div>
+
+<!-- FAQ 05 -->
+
+<div class="accordion-item faq-item">
+
+<h3 class="accordion-header">
+
+<button
+class="accordion-button collapsed faq-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faqFive"
+aria-expanded="false"
+aria-controls="faqFive">
+
+How can I enquire about returns or exchanges?
+
+</button>
+
+</h3>
+
+<div
+id="faqFive"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body faq-answer">
+
+Please contact us through WhatsApp
+with your order information and
+the reason for your enquiry.
+Our team can explain the applicable
+return or exchange conditions.
+
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ======================================
+     SECTION 06 — FINAL CTA
+====================================== -->
+
+<section class="contact-cta">
+
+<div class="container">
+
+<span class="eyebrow">
+DISCOVER ALBERTO CLOCK
+</span>
+
+<h2>
+Your Next Watch <em>Awaits.</em>
+</h2>
+
+<p>
+Explore timeless designs, contemporary
+silhouettes and distinctive styles
+from our watch collections.
+</p>
+
+<a href="collections.html" class="btn-luxury">
+
+EXPLORE COLLECTIONS
+
+<i class="bi bi-arrow-up-right"></i>
+
+</a>
+
+</div>
+</section>
+
+<!-- ======================================
+     NEWSLETTER
+====================================== -->
+
+<section class="newsletter">
+
+<div class="container">
+
+<div class="row align-items-center g-4">
+
+<div class="col-lg-6">
+
+<span class="eyebrow">STAY CONNECTED</span>
+
+<h2>Join Our World.</h2>
+
+<p>
+Be the first to hear about our latest collections
+and exclusive updates.
+</p>
+
+</div>
+
+<div class="col-lg-6">
+
+<form class="newsletter-form" id="newsletterForm">
+
+<input
+type="email"
+placeholder="Enter your email address"
+aria-label="Email address"
+required>
+
+<button type="submit">
+SUBSCRIBE
+</button>
+
+</form>
+
+</div>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- ======================================
+     SHARED FOOTER
+====================================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="row g-5">
+
+<div class="col-lg-4 col-md-6">
+
+<a href="index.html" class="footer-brand">
+
+<strong>ALBERTO</strong>
+<small>— CLOCK —</small>
+
+</a>
+
+<p class="footer-description">
+More than just time. Discover a collection
+of timeless watches designed to complement
+your personal style and every special moment.
+</p>
+
+<div class="socials">
+
+<a href="#" aria-label="Facebook">
+<i class="bi bi-facebook"></i>
+</a>
+
+<a href="#" aria-label="Instagram">
+<i class="bi bi-instagram"></i>
+</a>
+
+<a
+href="https://wa.me/923102226984"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="WhatsApp">
+<i class="bi bi-whatsapp"></i>
+</a>
+
+<a href="#" aria-label="Pinterest">
+<i class="bi bi-pinterest"></i>
+</a>
+
+</div>
+</div>
+
+<div class="col-lg-2 col-md-6">
+
+<h5>QUICK LINKS</h5>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="collections.html">Collections</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<h5>CUSTOMER SERVICE</h5>
+
+<ul>
+<li><a href="contact.html#faq">Help Center</a></li>
+<li><a href="contact.html#faq">Shipping Information</a></li>
+<li><a href="contact.html#faq">Returns & Exchanges</a></li>
+<li><a href="contact.html">Privacy Policy</a></li>
+<li><a href="contact.html">Terms & Conditions</a></li>
+</ul>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<h5>GET IN TOUCH</h5>
+
+<ul>
+
+<li>
+
+<a
+href="https://wa.me/923102226984"
+target="_blank"
+rel="noopener noreferrer">
+
+<i class="bi bi-whatsapp me-2"></i>
+0310 2226984
+
+</a>
+
+</li>
+
+<li>
+
+<a href="contact.html#contactForm">
+
+<i class="bi bi-envelope me-2"></i>
+Contact Our Team
+
+</a>
+
+</li>
+
+<li>
+
+<a href="collections.html">
+
+<i class="bi bi-watch me-2"></i>
+Explore Our Watches
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<span>
+© <span id="footerYear">2026</span>
+Alberto Clock. All Rights Reserved.
+</span>
+
+<span>
+Designed for Timeless Elegance.
+</span>
+
+</div>
+
+</div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+class="floating-whatsapp"
+href="https://wa.me/923102226984"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="Contact Alberto Clock on WhatsApp"
+title="Chat on WhatsApp">
+
+<i class="bi bi-whatsapp"></i>
+
+</a>
+
+<!-- ======================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+/* THEME TOGGLE */
+
+const themeToggle = document.getElementById("themeToggle");
+
+themeToggle.addEventListener("click",function(){
+
+ const current = document.documentElement.dataset.theme;
+
+ const next = current === "dark" ? "light" : "dark";
+
+ document.documentElement.dataset.theme = next;
+
+ try {
+  localStorage.setItem("albertoTheme",next);
+ } catch(e) {}
+
+});
+
+
+/* FIXED HEADER */
+
+const headerShell = document.getElementById("fixedHeaderShell");
+
+function updateHeaderHeight(){
+
+ document.documentElement.style.setProperty(
+  "--fixed-header-height",
+  headerShell.getBoundingClientRect().height + "px"
+ );
+
+}
+
+updateHeaderHeight();
+
+window.addEventListener("resize",updateHeaderHeight);
+window.addEventListener("load",updateHeaderHeight);
+
+if("ResizeObserver" in window){
+
+ new ResizeObserver(updateHeaderHeight).observe(headerShell);
+
+}
+
+
+/* CART COUNT */
+
+function updateCartCount(){
+
+ try {
+
+  const cart = JSON.parse(
+   localStorage.getItem("albertoCart") || "[]"
+  );
+
+  const count = Array.isArray(cart)
+   ? cart.reduce((total,item)=>{
+      return total + (Number(item.quantity) || 1);
+     },0)
+   : 0;
+
+  document.getElementById("cartCount").textContent = count;
+
+ } catch(e){
+
+  document.getElementById("cartCount").textContent = 0;
+
+ }
+
+}
+
+updateCartCount();
+
+window.addEventListener("storage",updateCartCount);
+
+
+/* SEARCH */
+
+document.getElementById("searchBtn").addEventListener("click",function(){
+
+ window.location.href = "shop.html";
+
+});
+
+
+/* ======================================
+   CONTACT FORM — WHATSAPP INTEGRATION
+====================================== */
+
+const contactForm = document.getElementById("albertoContactForm");
+
+contactForm.addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ if(!contactForm.reportValidity()) return;
+
+ const name = document.getElementById("customerName").value.trim();
+
+ const email = document.getElementById("customerEmail").value.trim();
+
+ const phone = document.getElementById("customerPhone").value.trim();
+
+ const subject = document.getElementById("customerSubject").value;
+
+ const message = document.getElementById("customerMessage").value.trim();
+
+ if(!name || !email || !phone || !subject || !message){
+  alert("Please complete all required fields.");
+  return;
+ }
+
+ const whatsappNumber = "923102226984";
+
+ const whatsappMessage =
+ `*ALBERTO CLOCK — NEW ENQUIRY*
+
+*Customer Name:* ${name}
+
+*Email:* ${email}
+
+*Phone:* ${phone}
+
+*Enquiry Type:* ${subject}
+
+*Message:*
+${message}
+
+Sent from Alberto Clock Contact Page.`;
+
+ const whatsappURL =
+ "https://wa.me/" +
+ whatsappNumber +
+ "?text=" +
+ encodeURIComponent(whatsappMessage);
+
+ const opened = window.open(
+  whatsappURL,
+  "_blank",
+  "noopener,noreferrer"
+ );
+
+ if(!opened){
+  window.location.href = whatsappURL;
+ }
+
+});
+
+
+/* NEWSLETTER DEMO */
+
+document.getElementById("newsletterForm").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ alert("Thank you for your interest in Alberto Clock!");
+
+ this.reset();
+
+});
+
+
+/* FOOTER YEAR */
+
+document.getElementById("footerYear").textContent =
+new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
